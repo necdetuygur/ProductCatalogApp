@@ -1,0 +1,3 @@
+var language = {
+    brand: "Marka"
+}
