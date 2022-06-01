@@ -1,10 +1,13 @@
 var config = {
-  ENDPOINT_CATEGORY: "https://localhost:7126/api/v1/Categories",
-  ENDPOINT_PRODUCT: "https://localhost:7126/api/v1/Products",
-  ENDPOINT_BRAND: "https://localhost:7126/api/Brands",
-  ENDPOINT_COLOR: "https://localhost:7126/api/Colors",
-  ENDPOINT_USE_CASE: "https://localhost:7126/api/UseCases",
-  ENDPOINT_USER: "https://localhost:7126/api/Users",
+  PICTURE_BASE: "https://aipu.herokuapp.com/img/",
+  ENDPOINT_CATEGORY: "https://aipu.herokuapp.com/api/Categorys",
+  ENDPOINT_PRODUCT: "https://aipu.herokuapp.com/api/Products",
+  ENDPOINT_BRAND: "https://aipu.herokuapp.com/api/Brands",
+  ENDPOINT_COLOR: "https://aipu.herokuapp.com/api/Colors",
+  ENDPOINT_USE_CASE: "https://aipu.herokuapp.com/api/UseCases",
+  ENDPOINT_USER: "https://aipu.herokuapp.com/api/Users",
+  ENDPOINT_USER_LOGIN: "https://aipu.herokuapp.com/api/Users/GetToken",
+  ENDPOINT_ADD_PRODUCT: "https://aipu.herokuapp.com/api/Products",
 };
 
 export default config;
