@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addProduct } from "../actions";
+import config from "../config";
 
 function AddProduct(props) {
   const [product, setProduct] = React.useState({});
