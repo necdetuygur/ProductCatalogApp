@@ -8,6 +8,8 @@ var config = {
   ENDPOINT_USER: "https://aipu.herokuapp.com/api/Users",
   ENDPOINT_USER_LOGIN: "https://aipu.herokuapp.com/api/Users/GetToken",
   ENDPOINT_ADD_PRODUCT: "https://aipu.herokuapp.com/api/Products",
+  ENDPOINT_PRODUCT_PICTURE_UPLOAD:
+    "https://aipu.herokuapp.com/api/Products/PictureUpload",
 };
 
 export default config;
