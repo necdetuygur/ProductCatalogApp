@@ -19,6 +19,7 @@ function ProductDetail(props) {
             style={{ width: "100%" }}
             src={
               config.PICTURE_BASE +
+              "/" +
               product.picture +
               "?i=" +
               new Date() * Math.random()

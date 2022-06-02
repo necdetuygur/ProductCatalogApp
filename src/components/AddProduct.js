@@ -38,13 +38,15 @@ function AddProduct(props) {
       <div className="col-md-6">
         <div className="card mb-3">
           <div className="card-body">
-            {!uploadedImage && props.language.pleasePictureSelect}
-            <pre>{JSON.stringify(product, 2, 2)}</pre>
-            <pre>{JSON.stringify(props.addProductSuccess, 2, 2)}</pre>
+            {!uploadedImage && (
+              <div className="alert alert-danger p-2 my-2" role="alert">
+                {props.language.pleasePictureSelect}
+              </div>
+            )}
             {!(uploadedImage.indexOf("ERR") > -1) && (
               <img
                 style={{ width: "100%" }}
-                src={"https://localhost:7126/img/" + uploadedImage}
+                src={config.PICTURE_BASE + "/" + uploadedImage}
                 alt=""
                 className="mb-2"
               />

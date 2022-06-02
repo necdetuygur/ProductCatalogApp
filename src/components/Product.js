@@ -14,6 +14,7 @@ function Product(props) {
           className="card-img-top"
           src={
             config.PICTURE_BASE +
+            "/" +
             props.product.picture +
             "?i=" +
             new Date() * Math.random()

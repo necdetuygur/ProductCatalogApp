@@ -1,5 +1,5 @@
 var config = {
-  PICTURE_BASE: "https://aipu.herokuapp.com/img/",
+  PICTURE_BASE: "https://aipu.herokuapp.com/img",
   ENDPOINT_CATEGORY: "https://aipu.herokuapp.com/api/Categories",
   ENDPOINT_PRODUCT: "https://aipu.herokuapp.com/api/Products",
   ENDPOINT_BRAND: "https://aipu.herokuapp.com/api/Brands",
