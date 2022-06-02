@@ -7,7 +7,7 @@ function AddProduct(props) {
   const [uploadedImage, setUploadedImage] = React.useState("");
 
   function submitEvent() {
-    var url = "https://localhost:7126/api/v1/Products/PictureUpload";
+    var url = config.ENDPOINT_PRODUCT_PICTURE_UPLOAD;
     const file = document.getElementById("file-input").files[0];
     const formData = new FormData();
     var fileExtension = file.name.split(".");
@@ -214,7 +214,10 @@ function AddProduct(props) {
                 className="form-select form-select-sm"
                 defaultValue={"DEFAULT"}
                 onChange={(e) => {
-                  setProduct({ ...product, isOfferable: e.target.value === "1" });
+                  setProduct({
+                    ...product,
+                    isOfferable: e.target.value === "1",
+                  });
                 }}
               >
                 <option value="DEFAULT" disabled>
