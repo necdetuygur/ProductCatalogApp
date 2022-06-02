@@ -11,15 +11,15 @@ const getProducts = () => (dispatch) => {
 };
 
 const addProduct = (product) => (dispatch) => {
-    var token = localStorage.getItem("token") || "";
-    var axiosConfig = { headers: { Authorization: `Bearer ${token}` } };
-    axios.post(config.ENDPOINT_ADD_PRODUCT, product, axiosConfig).then((r) => {
-      dispatch(getProducts());
-      return dispatch({
-        type: "ADD_PRODUCTS_SUCCESS",
-        payload: r.data,
-      });
+  var token = localStorage.getItem("token") || "";
+  var axiosConfig = { headers: { Authorization: `Bearer ${token}` } };
+  axios.post(config.ENDPOINT_ADD_PRODUCT, product, axiosConfig).then((r) => {
+    dispatch(getProducts());
+    return dispatch({
+      type: "ADD_PRODUCTS_SUCCESS",
+      payload: r.data,
     });
-  };
+  });
+};
 
-  export { getProducts, addProduct };
+export { getProducts, addProduct };
