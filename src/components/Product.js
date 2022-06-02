@@ -33,7 +33,10 @@ function Product(props) {
           <div className="card-text">{props.product.description}</div>
         </div>
         <div className="card-footer">
-          <span className="align-bottom">{props.product.price}</span>
+          <span className="align-bottom">
+            {props.product.price}
+            {props.language.priceSign}
+          </span>
         </div>
       </div>
     </div>

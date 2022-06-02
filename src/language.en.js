@@ -26,6 +26,7 @@ var language = {
   yes: "Yes",
   no: "No",
   productIsOfferable: "Is Offerable",
+  productIsSold: "Is Sold",
   ERR_EXTENSION: "File extension is not accepted",
   ERR_SIZE:
     "The size of the image you are trying to upload is larger than 400 KB",
@@ -33,6 +34,9 @@ var language = {
   ERR_PASSWORD_SHORT: "Passwords is short",
   ERR_PASSWORD_LONG: "Passwords is long",
   logout: "Log out",
+  bid: "Bid",
+  buy: "Buy",
+  priceSign: "$",
 };
 
 export default language;

@@ -26,12 +26,16 @@ var language = {
   yes: "Evet",
   no: "Hayır",
   productIsOfferable: "Teklif Verilebilir",
+  productIsSold: "Satıldı",
   ERR_EXTENSION: "Yüklemeye çalıştığınız resmin uzantısı kabul edilmiyor",
   ERR_SIZE: "Yüklemeye çalıştığınız resmin boyutu 400KB'tan büyüktür",
   ERR_PASSWORD_NOT_EQUAL: "Parolalar aynı değil",
   ERR_PASSWORD_SHORT: "Parola kısa",
   ERR_PASSWORD_LONG: "Parola uzun",
   logout: "Çıkış yap",
+  bid: "Teklif Ver",
+  buy: "Satın Al",
+  priceSign: "$",
 };
 
 export default language;
