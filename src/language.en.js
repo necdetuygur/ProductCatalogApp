@@ -1,5 +1,5 @@
 var language = {
-  appName: "E-Commerce Client",
+  appName: "Product Catalog",
   login: "Login",
   register: "Register",
   email: "E-Mail",

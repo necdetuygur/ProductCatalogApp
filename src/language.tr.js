@@ -1,5 +1,5 @@
 var language = {
-  appName: "E-Ticaret Sitesi",
+  appName: "Ürün Katalog",
   login: "Giriş Yap",
   register: "Kayıt Ol",
   email: "E-Posta",
