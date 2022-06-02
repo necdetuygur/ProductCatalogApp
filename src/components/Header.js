@@ -85,7 +85,6 @@ export default connect(
     categories: state.categories,
     products: state.products,
     selectedCategory: state.selectedCategory,
-    cart: state.cart,
   }),
   { getCategories, getProducts, setCategory, getBrands, getColors, getUseCases }
 )(Header);

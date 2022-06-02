@@ -8,8 +8,6 @@ var language = {
   name: "İsim",
   surname: "Soyisim",
   productDetail: "Ürün Detayları",
-  addToCart: "Sepete Ekle",
-  cart: "Sepet",
   en: "İngilizce (English)",
   tr: "Türkçe (Turkish)",
   addProduct: "Ürün Ekle",

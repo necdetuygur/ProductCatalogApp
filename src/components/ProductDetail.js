@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import { addCart } from "../actions";
 import config from "../config";
 
 function ProductDetail(props) {
@@ -35,17 +34,12 @@ function ProductDetail(props) {
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">{product.name}</li>
                 <li className="list-group-item">{product.description}</li>
-                <li className="list-group-item">{product.price}$</li>
+                <li className="list-group-item">{product.price}</li>
               </ul>
             </div>
             <div className="card-footer">
-              <span
-                className="btn btn-primary float-end cp"
-                onClick={() => {
-                  props.addCart(product);
-                }}
-              >
-                {props.language.addToCart}
+              <span className="btn btn-primary float-end cp" onClick={() => {}}>
+                {/* {props.language.XXX} */}
               </span>
             </div>
           </div>
@@ -60,5 +54,5 @@ export default connect(
     language: state.language,
     products: state.products,
   }),
-  { addCart }
+  {}
 )(ProductDetail);

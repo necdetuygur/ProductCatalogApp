@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { connect } from "react-redux";
-import { addCart } from "../actions";
 import config from "../config";
 
 function Product(props) {
@@ -34,15 +33,7 @@ function Product(props) {
           <div className="card-text">{props.product.description}</div>
         </div>
         <div className="card-footer">
-          <span className="align-bottom">{props.product.price}$</span>
-          <span
-            className="btn btn-primary btn-sm float-end"
-            onClick={() => {
-              props.addCart(props.product);
-            }}
-          >
-            {props.language.addToCart}
-          </span>
+          <span className="align-bottom">{props.product.price}</span>
         </div>
       </div>
     </div>
@@ -53,7 +44,5 @@ export default connect(
   (state) => ({
     language: state.language,
   }),
-  {
-    addCart,
-  }
+  {}
 )(Product);

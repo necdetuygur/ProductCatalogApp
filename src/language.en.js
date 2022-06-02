@@ -8,8 +8,6 @@ var language = {
   name: "Name",
   surname: "Surname",
   productDetail: "Product Detail",
-  addToCart: "Add to Cart",
-  cart: "Cart",
   en: "English (İngilizce)",
   tr: "Turkish (Türkçe)",
   addProduct: "Add Product",

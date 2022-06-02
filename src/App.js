@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import ProductDetail from "./components/ProductDetail";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Cart from "./components/Cart";
 import AddProduct from "./components/AddProduct";
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route path="/:category" element={<Home />} />
           <Route path="product/:productId" element={<ProductDetail />} />
-          <Route path="cart" element={<Cart />} />
         </Routes>
       </div>
       <Footer />

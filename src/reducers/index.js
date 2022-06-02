@@ -9,7 +9,6 @@ const INITIAL_STATE = {
   useCases: [],
   products: [],
   selectedCategory: "",
-  cart: [],
   addUserSuccess: {},
   token: localStorage.getItem("token") || "",
   addProductSuccess: {},
@@ -54,21 +53,6 @@ export const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, products: action.payload };
     case "SET_CATEGORY":
       return { ...state, selectedCategory: action.payload };
-    case "ADD_CART":
-      var newProduct = { ...action.payload };
-      var newCart = state.cart.slice();
-      var cartProduct = newCart.find((item) => item.id === newProduct.id);
-      if (cartProduct) {
-        newProduct.quantity = cartProduct.quantity + 1;
-        newCart.splice(
-          newCart.findIndex((item) => item.id === newProduct.id),
-          1
-        );
-      } else {
-        newProduct.quantity = 1;
-      }
-      newCart.push(newProduct);
-      return { ...state, cart: newCart };
     default:
       return state;
   }
