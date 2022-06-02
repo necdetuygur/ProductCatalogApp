@@ -4,7 +4,9 @@ import { addProduct } from "../actions";
 import config from "../config";
 
 function AddProduct(props) {
-  const [product, setProduct] = React.useState({});
+  const [product, setProduct] = React.useState({
+    userId: localStorage.getItem("userId"),
+  });
   const [uploadedImage, setUploadedImage] = React.useState("");
 
   function submitEvent() {
@@ -38,6 +40,7 @@ function AddProduct(props) {
       <div className="col-md-6">
         <div className="card mb-3">
           <div className="card-body">
+            <pre>{JSON.stringify(product, 2, 2)}</pre>
             {!uploadedImage && (
               <div className="alert alert-danger p-2 my-2" role="alert">
                 {props.language.pleasePictureSelect}

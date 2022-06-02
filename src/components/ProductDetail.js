@@ -31,6 +31,7 @@ function ProductDetail(props) {
           <div className="card mb-3">
             <div className="card-header">{props.language.productDetail}</div>
             <div className="card-body">
+              <pre>{JSON.stringify(product, 2, 2)}</pre>
               <ul className="list-group list-group-flush">
                 <li className="list-group-item">{product.name}</li>
                 <li className="list-group-item">{product.description}</li>
