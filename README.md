@@ -2,6 +2,7 @@
 - [https://betterprogramming.pub/how-to-deploy-your-react-app-to-heroku-aedc28b218ae](https://betterprogramming.pub/how-to-deploy-your-react-app-to-heroku-aedc28b218ae)
 - [https://ondm.herokuapp.com/](https://ondm.herokuapp.com/)
 ```nec
+heroku login
 rm -rf build
 npm run build
 cp build_after/* build
