@@ -37,6 +37,7 @@ var language = {
   bid: "Bid",
   buy: "Buy",
   priceSign: "$",
+  user: "User",
 };
 
 export default language;

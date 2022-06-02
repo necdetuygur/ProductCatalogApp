@@ -15,6 +15,7 @@ import HeaderButtons from "./HeaderButtons";
 function Header(props) {
   let navigate = useNavigate();
   useEffect(() => {
+    console.log("header called")
     props.getCategories();
     props.getProducts();
     props.getBrands();

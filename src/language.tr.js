@@ -36,6 +36,7 @@ var language = {
   bid: "Teklif Ver",
   buy: "Satın Al",
   priceSign: "$",
+  user: "Kullanıcı",
 };
 
 export default language;
