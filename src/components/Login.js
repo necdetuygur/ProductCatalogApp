@@ -1,17 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions";
+import { useNavigate } from "react-router";
 
 function Login(props) {
+  let navigate = useNavigate();
   const [user, setUser] = React.useState({});
+  React.useEffect(() => {
+    props.token && navigate("/");
+  });
+
   return (
     <div className="row justify-content-center align-middle">
       <div className="col-xl-4">
         <div className="card mt-5">
           <div className="card-header">{props.language.login}</div>
           <div className="card-body">
-            <pre>token: {props.token}</pre>
-            <pre>{JSON.stringify(user, 2, 2)}</pre>
             <div className="input-group mb-3">
               <span className="input-group-text">{props.language.email}</span>
               <input

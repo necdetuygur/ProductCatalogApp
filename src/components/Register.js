@@ -1,10 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addUser } from "../actions";
+import { useNavigate } from "react-router";
 
 function Register(props) {
+  let navigate = useNavigate();
   const [user, setUser] = React.useState({});
   const [errors, setErrors] = React.useState([]);
+  React.useEffect(() => {
+    props.token && navigate("/");
+  });
   function save() {
     var saveErrors = [];
     if (user.password !== user.passwordAgain) {
@@ -123,6 +128,7 @@ export default connect(
   (state) => ({
     language: state.language,
     addUserSuccess: state.addUserSuccess,
+    token: state.token,
   }),
   { addUser }
 )(Register);
