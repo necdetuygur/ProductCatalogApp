@@ -21,6 +21,11 @@ function Login(props) {
                 onChange={(e) => {
                   setUser({ ...user, email: e.target.value });
                 }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    props.login(user);
+                  }
+                }}
               />
             </div>
             <div className="input-group mb-3">
@@ -33,6 +38,11 @@ function Login(props) {
                 placeholder={props.language.password}
                 onChange={(e) => {
                   setUser({ ...user, password: e.target.value });
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    props.login(user);
+                  }
                 }}
               />
             </div>
