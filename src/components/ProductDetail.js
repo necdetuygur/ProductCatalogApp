@@ -166,12 +166,14 @@ function ProductDetail(props) {
             >
               {props.language.buy}
             </span>
-            <span
-              className="btn btn-primary float-end cp ms-1"
-              onClick={() => {}}
-            >
-              {props.language.bid}
-            </span>
+            {product.isOfferable && (
+              <span
+                className="btn btn-primary float-end cp ms-1"
+                onClick={() => {}}
+              >
+                {props.language.bid}
+              </span>
+            )}
           </div>
         </div>
       </div>
