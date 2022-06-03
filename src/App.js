@@ -6,6 +6,7 @@ import ProductDetail from "./components/ProductDetail";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import AddProduct from "./components/AddProduct";
+import MyAccount from "./components/MyAccount";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
-          <Route exact path="/add-product" element={<AddProduct />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/add-product" element={<AddProduct />} />
+          <Route exact path="/my-account" element={<MyAccount />} />
           <Route path="/:category" element={<Home />} />
           <Route path="product/:productId" element={<ProductDetail />} />
         </Routes>

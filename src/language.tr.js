@@ -37,6 +37,7 @@ var language = {
   buy: "Satın Al",
   priceSign: "$",
   user: "Kullanıcı",
+  myAccount: "Hesabım",
 };
 
 export default language;
