@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import config from "../config";
 import { getUserById } from "../actions";
 import Loading from "./Loading";
+import Modal from "./Modal";
+import SendOffer from "./SendOffer";
 
 function ProductDetail(props) {
   let params = useParams();
@@ -167,12 +169,14 @@ function ProductDetail(props) {
               {props.language.buy}
             </span>
             {product.isOfferable && (
-              <span
-                className="btn btn-primary float-end cp ms-1"
-                onClick={() => {}}
+              <Modal
+                modalId="sendOffer"
+                title={props.language.sendOffer}
+                buttonText={props.language.sendOffer}
+                buttonClassName="btn btn-primary float-end cp ms-1"
               >
-                {props.language.bid}
-              </span>
+                <SendOffer product={product} />
+              </Modal>
             )}
           </div>
         </div>

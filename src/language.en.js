@@ -34,7 +34,7 @@ var language = {
   ERR_PASSWORD_SHORT: "Passwords is short",
   ERR_PASSWORD_LONG: "Passwords is long",
   logout: "Log out",
-  bid: "Bid",
+  sendOffer: "Send Offer",
   buy: "Buy",
   priceSign: "$",
   user: "User",
@@ -42,6 +42,8 @@ var language = {
   receivedOffers: "Received Offers",
   sentOffers: "Sent Offers",
   myPurchases: "My Purchases",
+  quickOffers: "Quick Offers",
+  offerPrice: "Offer Price",
 };
 
 export default language;

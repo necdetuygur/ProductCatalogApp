@@ -41,6 +41,8 @@ var language = {
   receivedOffers: "Teklif Verdiklerim",
   sentOffers: "Teklif Aldıklarım",
   myPurchases: "Satın Aldıklarım",
+  quickOffers: "Hızlı Teklifler",
+  offerPrice: "Teklif Fiyatı",
 };
 
 export default language;
