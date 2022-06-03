@@ -36,7 +36,7 @@ function ProductDetail(props) {
           <div className="card-header">{props.language.picture}</div>
           <div className="card-body p-0">
             <img
-              style={{ width: "100%" }}
+              style={{ width: "100%", minHeight: "300px" }}
               src={
                 config.PICTURE_BASE +
                 "/" +
