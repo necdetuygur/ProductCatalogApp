@@ -5,7 +5,7 @@ function Modal(props) {
     <>
       <button
         type="button"
-        class={props.buttonClassName}
+        className={props.buttonClassName}
         data-bs-toggle="modal"
         data-bs-target={"#" + props.modalId}
       >
@@ -14,7 +14,7 @@ function Modal(props) {
       <div
         className="modal fade"
         id={props.modalId}
-        tabindex="-1"
+        tabIndex="-1"
         aria-hidden="true"
       >
         <div className="modal-dialog">
