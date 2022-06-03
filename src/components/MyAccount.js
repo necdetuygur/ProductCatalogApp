@@ -1,7 +1,63 @@
 import React from "react";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router";
 
-function MyAccount() {
-  return <div>MyAccount</div>;
+function MyAccount(props) {
+  const [currentTab, setCurrentTab] = React.useState(1);
+  let navigate = useNavigate();
+  React.useEffect(() => {
+    !props.token && navigate("/");
+  });
+
+  return (
+    <div className="card">
+      <div className="card-header">
+        <ul className="nav nav-tabs card-header-tabs">
+          <li className="nav-item">
+            <span
+              className={"nav-link cp " + (currentTab === 1 && "active")}
+              onClick={() => {
+                setCurrentTab(1);
+              }}
+            >
+              {props.language.receivedOffers}
+            </span>
+          </li>
+          <li className="nav-item">
+            <span
+              className={"nav-link cp " + (currentTab === 2 && "active")}
+              onClick={() => {
+                setCurrentTab(2);
+              }}
+            >
+              {props.language.sentOffers}
+            </span>
+          </li>
+          <li className="nav-item">
+            <span
+              className={"nav-link cp " + (currentTab === 3 && "active")}
+              onClick={() => {
+                setCurrentTab(3);
+              }}
+            >
+              {props.language.myPurchases}
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div className="card-body">
+        {currentTab === 1 && <div>Birinci Sekme</div>}
+        {currentTab === 2 && <div>İkinci Sekme</div>}
+        {currentTab === 3 && <div>Üçüncü Sekme</div>}
+      </div>
+    </div>
+  );
 }
 
-export default MyAccount;
+export default connect(
+  (state) => ({
+    language: state.language,
+    token: state.token,
+  }),
+  {}
+)(MyAccount);

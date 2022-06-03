@@ -39,6 +39,9 @@ var language = {
   priceSign: "$",
   user: "User",
   myAccount: "My Account",
+  receivedOffers: "Received Offers",
+  sentOffers: "Sent Offers",
+  myPurchases: "My Purchases",
 };
 
 export default language;
