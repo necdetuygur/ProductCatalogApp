@@ -31,10 +31,10 @@ function Footer(props) {
       </div>
       <div className="p-3">
         <div className="row justify-content-around">
-          <div className="col-4">
+          <div className="col-xl-6 col-md-4 col-sm-2">
             © {new Date().getFullYear()} {props.language.appName}
           </div>
-          <div className="col-2">
+          <div className="col-xl-2 col-md-4 col-sm-6">
             <select
               className="form-select form-select-sm"
               defaultValue={props.selectedLanguage}
