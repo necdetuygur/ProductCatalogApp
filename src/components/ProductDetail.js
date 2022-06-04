@@ -10,6 +10,8 @@ import SendOffer from "./SendOffer";
 function ProductDetail(props) {
   let params = useParams();
   const [product, setProduct] = React.useState({});
+  const [thisProductIsMyProduct, setThisProductIsMyProduct] =
+    React.useState(false);
 
   React.useEffect(() => {
     setProduct(
@@ -21,6 +23,15 @@ function ProductDetail(props) {
     !!product &&
       Object.keys(product).indexOf("userId") > -1 &&
       props.getUserById(product.userId);
+
+    props.products.forEach((product) => {
+      if (
+        product.userId + "" === localStorage.getItem("userId") + "" &&
+        product.id + "" === params.productId + ""
+      ) {
+        setThisProductIsMyProduct(true);
+      }
+    });
 
     // eslint-disable-next-line
   }, [props.products.length, product]);
@@ -163,41 +174,43 @@ function ProductDetail(props) {
               </ul>
             }
           </div>
-          <div className="card-footer text-end">
-            <span className="btn btn-primary cp ms-1" onClick={() => {}}>
-              {props.language.buy}
-            </span>
-            {product.isOfferable &&
-              // == true ? Teklif ver : Withdraw
-              !props.mySentOffers.find(
+          {!thisProductIsMyProduct && (
+            <div className="card-footer text-end">
+              <span className="btn btn-primary cp ms-1" onClick={() => {}}>
+                {props.language.buy}
+              </span>
+              {product.isOfferable &&
+                // == true ? Teklif ver : Withdraw
+                !props.mySentOffers.find(
+                  (order) => order.productId + "" === product.id + ""
+                ) && (
+                  <Modal
+                    modalId="sendOffer"
+                    title={props.language.sendOffer}
+                    buttonText={props.language.sendOffer}
+                    buttonClassName="btn btn-primary cp ms-1"
+                  >
+                    <SendOffer product={product} />
+                  </Modal>
+                )}
+              {!!props.mySentOffers.find(
                 (order) => order.productId + "" === product.id + ""
               ) && (
-                <Modal
-                  modalId="sendOffer"
-                  title={props.language.sendOffer}
-                  buttonText={props.language.sendOffer}
-                  buttonClassName="btn btn-primary cp ms-1"
+                <button
+                  className="btn btn-danger ms-1"
+                  onClick={() => {
+                    props.withdrawOffer(
+                      props.mySentOffers.find(
+                        (order) => order.productId + "" === product.id + ""
+                      ).id
+                    );
+                  }}
                 >
-                  <SendOffer product={product} />
-                </Modal>
+                  {props.language.withdrawOffer}
+                </button>
               )}
-            {!!props.mySentOffers.find(
-              (order) => order.productId + "" === product.id + ""
-            ) && (
-              <button
-                className="btn btn-danger ms-1"
-                onClick={() => {
-                  props.withdrawOffer(
-                    props.mySentOffers.find(
-                      (order) => order.productId + "" === product.id + ""
-                    ).id
-                  );
-                }}
-              >
-                {props.language.withdrawOffer}
-              </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
