@@ -55,6 +55,7 @@ var language = {
   saleOk: "Purchase done successfully",
   makeBuy: "Make your purchase",
   success: "Process Successfully",
+  ERR_EMAILINVALID: "E-Mail Invalid",
 };
 
 export default language;

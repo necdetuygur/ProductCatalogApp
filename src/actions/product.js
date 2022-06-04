@@ -15,6 +15,14 @@ const addProduct = (product) => (dispatch) => {
   var axiosConfig = { headers: { Authorization: `Bearer ${token}` } };
   axios.post(config.ENDPOINT_ADD_PRODUCT, product, axiosConfig).then((r) => {
     dispatch(getProducts());
+    
+    setTimeout(() => {
+      dispatch({
+        type: "ADD_PRODUCTS_SUCCESS",
+        payload: {},
+      });
+    }, 3e3);
+
     return dispatch({
       type: "ADD_PRODUCTS_SUCCESS",
       payload: r.data,

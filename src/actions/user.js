@@ -2,6 +2,13 @@ import axios from "axios";
 import config from "../config";
 
 export const addUser = (user) => (dispatch) => {
+  setTimeout(() => {
+    dispatch({
+      type: "ADD_USER_SUCCESS",
+      payload: {},
+    });
+  }, 3e3);
+
   axios.post(config.ENDPOINT_USER, user).then((r) =>
     dispatch({
       type: "ADD_USER_SUCCESS",
