@@ -222,9 +222,7 @@ function ProductDetail(props) {
       </div>
     </div>
   ) : (
-    <div className="text-center m-5 p-5">
-      <Loading />
-    </div>
+    <Loading />
   );
 }
 

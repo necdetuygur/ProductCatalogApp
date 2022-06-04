@@ -53,6 +53,7 @@ var language = {
   noData: "Veri yok",
   saleOk: "Satın alma başarıyla gerçekleşti",
   makeBuy: "Satın alma işlemini gerçekleştir",
+  success: "İşlem Başarıyla Gerçekleştirildi",
 };
 
 export default language;

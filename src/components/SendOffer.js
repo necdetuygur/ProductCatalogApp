@@ -18,8 +18,6 @@ function SendOffer(props) {
 
   return (
     <>
-      <pre>{JSON.stringify(order, 2, 2)}</pre>
-      <pre>{JSON.stringify(props.addOrderSuccess, 2, 2)}</pre>
       <div className="input-group mb-2">
         <span className="input-group-text">{props.language.quickOffers}</span>
         <select

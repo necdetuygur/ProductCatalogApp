@@ -54,6 +54,7 @@ var language = {
   noData: "No data",
   saleOk: "Purchase done successfully",
   makeBuy: "Make your purchase",
+  success: "Process Successfully",
 };
 
 export default language;

@@ -45,8 +45,6 @@ function Register(props) {
                 </div>
               ))}
 
-            <pre>{JSON.stringify(user, 2, 2)}</pre>
-            <pre>{JSON.stringify(props.addUserSuccess, 2, 2)}</pre>
             <div className="input-group mb-3">
               <span className="input-group-text">{props.language.name}</span>
               <input
