@@ -41,4 +41,57 @@ const acceptOffer = (orderId) => (dispatch) => {
   }).then((r) => dispatch(getMySentOffers()));
 };
 
-export { addOrder, getMySentOffers, withdrawOffer, acceptOffer };
+const buyOrder = (orderId, productId) => (dispatch) => {
+  var bodyFormData = new FormData();
+
+  bodyFormData.append("Id", orderId);
+  bodyFormData.append("statusId", "3");
+  axios({
+    method: "put",
+    url: config.ENDPOINT_ORDER,
+    data: bodyFormData,
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => dispatch(getMySentOffers()));
+
+  bodyFormData = new FormData();
+  bodyFormData.append("Id", productId);
+  bodyFormData.append("isSold", true);
+  axios({
+    method: "put",
+    url: config.ENDPOINT_PRODUCT,
+    data: bodyFormData,
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => dispatch(getMySentOffers()));
+};
+
+const buyProduct = (product) => (dispatch) => {
+  var bodyFormData = new FormData();
+
+  dispatch(
+    addOrder({
+      userId: localStorage.getItem("userId"),
+      productId: product.id,
+      statusId: 3,
+      price: product.price,
+    })
+  );
+
+  bodyFormData = new FormData();
+  bodyFormData.append("Id", product.id);
+  bodyFormData.append("isSold", true);
+  axios({
+    method: "put",
+    url: config.ENDPOINT_PRODUCT,
+    data: bodyFormData,
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => dispatch(getMySentOffers()));
+};
+
+export {
+  addOrder,
+  getMySentOffers,
+  withdrawOffer,
+  acceptOffer,
+  buyOrder,
+  buyProduct,
+};

@@ -52,6 +52,8 @@ var language = {
   rejectOffer: "Reject Offer",
   acceptOffer: "Accept Offer",
   noData: "No data",
+  saleOk: "Purchase done successfully",
+  makeBuy: "Make your purchase",
 };
 
 export default language;

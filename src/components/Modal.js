@@ -8,16 +8,20 @@ function Modal(props) {
         className={props.buttonClassName}
         data-bs-toggle="modal"
         data-bs-target={"#" + props.modalId}
+        onClick={() => {
+          document.querySelector(".modal-backdrop").remove();
+        }}
       >
         {props.buttonText}
       </button>
       <div
         className="modal fade"
+        data-bs-backdrop="none"
         id={props.modalId}
         tabIndex="-1"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title text-dark">{props.title}</h5>

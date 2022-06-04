@@ -6,6 +6,7 @@ import { getUserById, withdrawOffer } from "../actions";
 import Loading from "./Loading";
 import Modal from "./Modal";
 import SendOffer from "./SendOffer";
+import Buy from "./Buy";
 
 function ProductDetail(props) {
   let params = useParams();
@@ -174,11 +175,17 @@ function ProductDetail(props) {
               </ul>
             }
           </div>
-          {!thisProductIsMyProduct && (
+          {!thisProductIsMyProduct && !product.isSold && (
             <div className="card-footer text-end">
-              <span className="btn btn-primary cp ms-1" onClick={() => {}}>
-                {props.language.buy}
-              </span>
+              <Modal
+                modalId="buy"
+                title={props.language.buy}
+                buttonText={props.language.buy}
+                buttonClassName="btn btn-primary cp ms-1"
+              >
+                <Buy product={product} />
+              </Modal>
+
               {product.isOfferable &&
                 // == true ? Teklif ver : Withdraw
                 !props.mySentOffers.find(
