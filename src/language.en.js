@@ -44,6 +44,9 @@ var language = {
   myPurchases: "My Purchases",
   quickOffers: "Quick Offers",
   offerPrice: "Offer Price",
+  orderStatus_1: "Offered",
+  orderStatus_2: "Offer Accepted",
+  orderStatus_3: "Saled",
 };
 
 export default language;

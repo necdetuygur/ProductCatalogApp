@@ -1,21 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
+import { addOrder } from "../actions";
 
 function SendOffer(props) {
   const [price, setPrice] = React.useState(0);
+  const [order, setOrder] = React.useState({
+    userId: localStorage.getItem("userId"),
+    productId: props.product.id,
+    statusId: 1,
+  });
+
   function calculate(percent) {
-    setPrice((props.product.price * percent) / 100);
+    var ret = (props.product.price * percent) / 100;
+    setPrice(ret);
+    return ret;
   }
 
   return (
     <>
+      <pre>{JSON.stringify(order, 2, 2)}</pre>
+      <pre>{JSON.stringify(props.addOrderSuccess, 2, 2)}</pre>
       <div className="input-group mb-2">
         <span className="input-group-text">{props.language.quickOffers}</span>
         <select
           className="form-select form-select-sm"
           defaultValue={"DEFAULT"}
           onChange={(e) => {
-            calculate(e.target.value);
+            setOrder({
+              ...order,
+              price: calculate(e.target.value),
+            });
           }}
         >
           <option value="DEFAULT" disabled>
@@ -43,9 +57,23 @@ function SendOffer(props) {
           value={price}
           onChange={(e) => {
             setPrice(e.target.value);
+            setOrder({
+              ...order,
+              price: e.target.value,
+            });
           }}
         />
         <span className="input-group-text">{props.language.priceSign}</span>
+      </div>
+      <div className="text-end">
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            props.addOrder(order);
+          }}
+        >
+          {props.language.sendOffer}
+        </button>
       </div>
     </>
   );
@@ -54,6 +82,7 @@ function SendOffer(props) {
 export default connect(
   (state) => ({
     language: state.language,
+    addOrderSuccess: state.addOrderSuccess,
   }),
-  {}
+  { addOrder }
 )(SendOffer);

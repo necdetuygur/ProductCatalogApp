@@ -33,7 +33,7 @@ var language = {
   ERR_PASSWORD_SHORT: "Parola kısa",
   ERR_PASSWORD_LONG: "Parola uzun",
   logout: "Çıkış yap",
-  bid: "Teklif Ver",
+  sendOffer: "Teklif Ver",
   buy: "Satın Al",
   priceSign: "$",
   user: "Kullanıcı",
@@ -43,6 +43,9 @@ var language = {
   myPurchases: "Satın Aldıklarım",
   quickOffers: "Hızlı Teklifler",
   offerPrice: "Teklif Fiyatı",
+  orderStatus_1: "Teklif Verildi",
+  orderStatus_2: "Teklif Onaylandı",
+  orderStatus_3: "Satın Alındı",
 };
 
 export default language;

@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   token: localStorage.getItem("token") || "",
   addProductSuccess: {},
   productDetailUser: {},
+  addOrderSuccess: {},
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -36,6 +37,9 @@ export const reducer = (state = INITIAL_STATE, action) => {
 
     case "GET_USE_CASES_SUCCESS":
       return { ...state, useCases: action.payload };
+
+    case "ADD_ORDERS_SUCCESS":
+      return { ...state, addOrderSuccess: action.payload };
 
     case "ADD_USER_SUCCESS":
       return { ...state, addUserSuccess: action.payload };

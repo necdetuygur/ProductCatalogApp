@@ -5,3 +5,4 @@ export * from "./brand";
 export * from "./color";
 export * from "./useCase";
 export * from "./user";
+export * from "./order";

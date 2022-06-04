@@ -1,15 +1,17 @@
+var base = "https://aipu.herokuapp.com/";
+
 var config = {
-  PICTURE_BASE: "https://aipu.herokuapp.com/img",
-  ENDPOINT_CATEGORY: "https://aipu.herokuapp.com/api/Categories",
-  ENDPOINT_PRODUCT: "https://aipu.herokuapp.com/api/Products",
-  ENDPOINT_BRAND: "https://aipu.herokuapp.com/api/Brands",
-  ENDPOINT_COLOR: "https://aipu.herokuapp.com/api/Colors",
-  ENDPOINT_USE_CASE: "https://aipu.herokuapp.com/api/UseCases",
-  ENDPOINT_USER: "https://aipu.herokuapp.com/api/Users",
-  ENDPOINT_USER_LOGIN: "https://aipu.herokuapp.com/api/Users/Login",
-  ENDPOINT_ADD_PRODUCT: "https://aipu.herokuapp.com/api/Products",
-  ENDPOINT_PRODUCT_PICTURE_UPLOAD:
-    "https://aipu.herokuapp.com/api/Products/PictureUpload",
+  PICTURE_BASE: base + "img",
+  ENDPOINT_CATEGORY: base + "api/Categories",
+  ENDPOINT_PRODUCT: base + "api/Products",
+  ENDPOINT_BRAND: base + "api/Brands",
+  ENDPOINT_COLOR: base + "api/Colors",
+  ENDPOINT_USE_CASE: base + "api/UseCases",
+  ENDPOINT_USER: base + "api/Users",
+  ENDPOINT_USER_LOGIN: base + "api/Users/Login",
+  ENDPOINT_ADD_PRODUCT: base + "api/Products",
+  ENDPOINT_PRODUCT_PICTURE_UPLOAD: base + "api/Products/PictureUpload",
+  ENDPOINT_ADD_ORDER: base + "api/Orders",
 };
 
 export default config;
