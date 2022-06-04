@@ -7,9 +7,10 @@ function Product(props) {
   let navigate = useNavigate();
 
   return (
-    <div className="col-md-3 mb-3 cp">
+    <div className="col-md-3 mb-3">
       <div className="card">
         <img
+          style={{ minWidth: "100%", height: "150px" }}
           className="card-img-top"
           src={
             config.PICTURE_BASE +
