@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
+import MyPurchases from "./MyPurchases";
 import MyReceivedOffers from "./MyReceivedOffers";
 import MySentOffers from "./MySentOffers";
 
@@ -51,7 +52,7 @@ function MyAccount(props) {
       <div className="card-body p-0">
         {currentTab === 1 && <MyReceivedOffers />}
         {currentTab === 2 && <MySentOffers />}
-        {currentTab === 3 && <div>Üçüncü Sekme</div>}
+        {currentTab === 3 && <MyPurchases />}
       </div>
     </div>
   );

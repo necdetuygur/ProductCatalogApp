@@ -181,9 +181,9 @@ function ProductDetail(props) {
                 modalId="buy"
                 title={props.language.buy}
                 buttonText={props.language.buy}
-                buttonClassName="btn btn-primary cp ms-1"
+                buttonClassName="btn btn-success cp ms-1"
               >
-                <Buy product={product} />
+                <Buy product={product} isProductBuy={true} />
               </Modal>
 
               {product.isOfferable &&

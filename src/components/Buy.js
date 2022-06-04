@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import Loading from "./Loading";
 import { connect } from "react-redux";
-import { buyProduct } from "../actions";
+import { buyProduct, buyOrder } from "../actions";
 
 function Buy(props) {
   const [started, setStarted] = React.useState(false);
@@ -12,7 +12,11 @@ function Buy(props) {
     setTimeout(() => {
       navigate("/sale-ok");
     }, 3e3);
-    props.buyProduct(props.product);
+    if (props.isProductBuy) {
+      props.buyProduct(props.product);
+    } else {
+      props.buyOrder(props.orderId, props.productId);
+    }
   }
   return (
     <div className="text-center m-5 p-5">
@@ -36,5 +40,5 @@ export default connect(
   (state) => ({
     language: state.language,
   }),
-  { buyProduct }
+  { buyProduct, buyOrder }
 )(Buy);

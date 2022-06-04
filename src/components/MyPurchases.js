@@ -2,10 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
 import { withdrawOffer } from "../actions";
-import Modal from "./Modal";
-import Buy from "./Buy";
 
-function MySentOffers(props) {
+function MyPurchases(props) {
   let navigate = useNavigate();
   return (
     <table className="table table-striped">
@@ -19,7 +17,7 @@ function MySentOffers(props) {
       <tbody>
         {props.mySentOffers.map(
           (order) =>
-            (order.statusId * 1 === 1 || order.statusId * 1 === 2) && (
+            order.statusId * 1 === 3 && (
               <tr key={order.id}>
                 <td>
                   {
@@ -41,30 +39,6 @@ function MySentOffers(props) {
                   >
                     {props.language.showProduct}
                   </button>
-
-                  {order.statusId * 1 === 2 && (
-                    <Modal
-                      modalId="buy"
-                      title={props.language.buy}
-                      buttonText={props.language.buy}
-                      buttonClassName="btn btn-success btn-sm cp ms-1"
-                    >
-                      <Buy
-                        isProductBuy={false}
-                        orderId={order.id}
-                        productId={order.productId}
-                      />
-                    </Modal>
-                  )}
-
-                  <button
-                    className="btn btn-danger btn-sm ms-1"
-                    onClick={() => {
-                      props.withdrawOffer(order.id);
-                    }}
-                  >
-                    {props.language.withdrawOffer}
-                  </button>
                 </td>
               </tr>
             )
@@ -83,4 +57,4 @@ export default connect(
     withdrawOfferSuccess: state.withdrawOfferSuccess,
   }),
   { withdrawOffer }
-)(MySentOffers);
+)(MyPurchases);
