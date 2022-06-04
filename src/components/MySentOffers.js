@@ -36,6 +36,18 @@ function MySentOffers(props) {
               >
                 {props.language.showProduct}
               </button>
+
+              {order.statusId * 1 === 2 && (
+                <button
+                  className="btn btn-primary btn-sm ms-1"
+                  onClick={() => {
+                    // satın alma işlemi
+                  }}
+                >
+                  {props.language.buy}
+                </button>
+              )}
+
               <button
                 className="btn btn-danger btn-sm ms-1"
                 onClick={() => {
