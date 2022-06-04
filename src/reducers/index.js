@@ -25,15 +25,19 @@ export const reducer = (state = INITIAL_STATE, action) => {
       var importedLanguage = require("../language." +
         action.payload +
         ".js").default;
+      document.title = importedLanguage.appName;
       return {
         ...state,
         selectedLanguage: action.payload,
         language: importedLanguage,
       };
+
     case "GET_CATEGORIES_SUCCESS":
       return { ...state, categories: action.payload };
+
     case "GET_BRANDS_SUCCESS":
       return { ...state, brands: action.payload };
+
     case "GET_COLORS_SUCCESS":
       return { ...state, colors: action.payload };
 
@@ -51,8 +55,10 @@ export const reducer = (state = INITIAL_STATE, action) => {
 
     case "ADD_USER_SUCCESS":
       return { ...state, addUserSuccess: action.payload };
+
     case "ADD_PRODUCTS_SUCCESS":
       return { ...state, addProductSuccess: action.payload };
+
     case "GET_USER_BY_ID_SUCCESS":
       return { ...state, productDetailUser: action.payload };
 
@@ -62,14 +68,17 @@ export const reducer = (state = INITIAL_STATE, action) => {
       localStorage.setItem("name", action.payload.name);
       localStorage.setItem("surname", action.payload.surname);
       return { ...state, token: action.payload.token };
+
     case "USER_LOGOUT_SUCCESS":
       localStorage.setItem("token", "");
       return { ...state, token: "" };
 
     case "GET_PRODUCTS_SUCCESS":
       return { ...state, products: action.payload };
+
     case "SET_CATEGORY":
       return { ...state, selectedCategory: action.payload };
+
     default:
       return state;
   }
