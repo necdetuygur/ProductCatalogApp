@@ -49,6 +49,8 @@ var language = {
   orderStatus_3: "Saled",
   showProduct: "Show Product",
   withdrawOffer: "Withdraw Offer",
+  rejectOffer: "Reject Offer",
+  acceptOffer: "Accept Offer",
 };
 
 export default language;

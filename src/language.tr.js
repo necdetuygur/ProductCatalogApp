@@ -48,6 +48,8 @@ var language = {
   orderStatus_3: "Satın Alındı",
   showProduct: "Ürünü Görüntüle",
   withdrawOffer: "Teklifi Geri Çek",
+  rejectOffer: "Teklifi Reddet",
+  acceptOffer: "Accept Offer",
 };
 
 export default language;

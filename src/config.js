@@ -13,6 +13,7 @@ var config = {
   ENDPOINT_PRODUCT_PICTURE_UPLOAD: base + "api/Products/PictureUpload",
   ENDPOINT_ORDER: base + "api/Orders",
   ENDPOINT_GET_BY_USER_ID_ORDER: base + "api/Orders/GetByUserIdOrder",
+  ENDPOINT_GET_BY_PRODUCT_ID_ORDER: base + "api/Orders/GetByProductIdOrder",
 };
 
 export default config;
