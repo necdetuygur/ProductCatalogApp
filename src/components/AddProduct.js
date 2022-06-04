@@ -6,6 +6,7 @@ import config from "../config";
 function AddProduct(props) {
   const [product, setProduct] = React.useState({
     userId: localStorage.getItem("userId"),
+    isOfferable: false,
   });
   const [uploadedImage, setUploadedImage] = React.useState("");
 
@@ -218,7 +219,7 @@ function AddProduct(props) {
               </span>
               <select
                 className="form-select form-select-sm"
-                defaultValue={"DEFAULT"}
+                defaultValue={"0"}
                 onChange={(e) => {
                   setProduct({
                     ...product,
@@ -226,9 +227,6 @@ function AddProduct(props) {
                   });
                 }}
               >
-                <option value="DEFAULT" disabled>
-                  {props.language.select}
-                </option>
                 <option value="1">{props.language.yes}</option>
                 <option value="0">{props.language.no}</option>
               </select>
