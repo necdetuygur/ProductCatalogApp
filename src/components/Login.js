@@ -3,9 +3,15 @@ import { connect } from "react-redux";
 import { login } from "../actions";
 import { useNavigate } from "react-router";
 
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email) && email.length > 8;
+}
+
 function Login(props) {
   let navigate = useNavigate();
   const [user, setUser] = React.useState({});
+  const [mailErr, setMailErr] = React.useState(false);
   React.useEffect(() => {
     props.token && navigate("/");
   });
@@ -23,6 +29,7 @@ function Login(props) {
                 className="form-control"
                 placeholder={props.language.email}
                 onChange={(e) => {
+                  setMailErr(!validateEmail(e.target.value));
                   setUser({ ...user, email: e.target.value });
                 }}
                 onKeyDown={(e) => {
@@ -32,6 +39,11 @@ function Login(props) {
                 }}
               />
             </div>
+            {mailErr && (
+              <div className="alert alert-danger mb-3">
+                {props.language.ERR_EMAILINVALID}
+              </div>
+            )}
             <div className="input-group mb-3">
               <span className="input-group-text">
                 {props.language.password}
@@ -55,7 +67,7 @@ function Login(props) {
             <button
               className="btn btn-primary"
               onClick={() => {
-                props.login(user);
+                validateEmail(user.email) && props.login(user);
               }}
             >
               {props.language.login}
