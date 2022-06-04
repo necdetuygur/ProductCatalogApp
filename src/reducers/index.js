@@ -51,6 +51,8 @@ export const reducer = (state = INITIAL_STATE, action) => {
     case "USER_LOGIN_SUCCESS":
       localStorage.setItem("token", action.payload.token);
       localStorage.setItem("userId", action.payload.id);
+      localStorage.setItem("name", action.payload.name);
+      localStorage.setItem("surname", action.payload.surname);
       return { ...state, token: action.payload.token };
     case "USER_LOGOUT_SUCCESS":
       localStorage.setItem("token", "");

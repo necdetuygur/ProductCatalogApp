@@ -38,6 +38,7 @@ function HeaderButtons(props) {
           >
             {props.language.addProduct}
           </button>
+
           <div className="btn-group ms-1">
             <button
               className="btn btn-primary btn-sm"
@@ -56,7 +57,20 @@ function HeaderButtons(props) {
             >
               <span className="visually-hidden">Dropdown</span>
             </button>
-            <ul className="dropdown-menu">
+            <ul className="dropdown-menu dropdown-menu-end">
+              <li>
+                <span
+                  className="dropdown-item cp"
+                  onClick={() => {
+                    navigate("/my-account");
+                  }}
+                >
+                  {localStorage.getItem("name") +
+                    " " +
+                    localStorage.getItem("surname")}
+                </span>
+              </li>
+
               <li>
                 <span
                   className="dropdown-item cp"
