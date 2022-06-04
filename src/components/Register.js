@@ -40,6 +40,7 @@ function Register(props) {
     }
     setErrors(saveErrors);
     if (saveErrors.length > 0) {
+      setLoading(false);
       return;
     }
     props.addUser(user);
