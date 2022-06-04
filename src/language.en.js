@@ -51,6 +51,7 @@ var language = {
   withdrawOffer: "Withdraw Offer",
   rejectOffer: "Reject Offer",
   acceptOffer: "Accept Offer",
+  noData: "No data",
 };
 
 export default language;

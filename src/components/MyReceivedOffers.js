@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import config from "../config";
 import axios from "axios";
 import { useNavigate } from "react-router";
-import { withdrawOffer } from "../actions";
+import { withdrawOffer, acceptOffer } from "../actions";
 import Loading from "./Loading";
 
 const getProductOffers = async (productId) => {
@@ -16,14 +16,22 @@ const getProductOffers = async (productId) => {
 function MyReceivedOffers(props) {
   let navigate = useNavigate();
   const [offers, setOffers] = React.useState([]);
+  const [pageLoaded, setPageLoaded] = React.useState(false);
   React.useEffect(() => {
     props.products.forEach((product) => {
       if (product.userId + "" === localStorage.getItem("userId") + "") {
         getProductOffers(product.id).then((r) => {
-          setOffers([...offers, ...r.data]);
+          r.data.forEach((offer) => {
+            if (offer.statusId * 1 === 1) {
+              setOffers([...offers, offer]);
+            }
+          });
         });
       }
     });
+    setTimeout(() => {
+      setPageLoaded(true);
+    }, 1e3);
     // eslint-disable-next-line
   }, [props.products.length]);
 
@@ -72,7 +80,7 @@ function MyReceivedOffers(props) {
                   <button
                     className="btn btn-success btn-sm ms-1"
                     onClick={() => {
-                      // props.acceptOffer(order.id);
+                      props.acceptOffer(order.id);
                     }}
                   >
                     {props.language.acceptOffer}
@@ -92,7 +100,7 @@ function MyReceivedOffers(props) {
         </table>
       ) : (
         <div className="text-center m-5 p-5">
-          <Loading />
+          {!pageLoaded ? <Loading /> : props.language.noData}
         </div>
       )}
     </>
@@ -105,5 +113,5 @@ export default connect(
     token: state.token,
     products: state.products,
   }),
-  { withdrawOffer }
+  { withdrawOffer, acceptOffer }
 )(MyReceivedOffers);

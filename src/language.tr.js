@@ -50,6 +50,7 @@ var language = {
   withdrawOffer: "Teklifi Geri Çek",
   rejectOffer: "Teklifi Reddet",
   acceptOffer: "Accept Offer",
+  noData: "Veri yok",
 };
 
 export default language;

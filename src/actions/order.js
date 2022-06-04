@@ -29,4 +29,16 @@ const withdrawOffer = (orderId) => (dispatch) => {
     .then((r) => dispatch(getMySentOffers()));
 };
 
-export { addOrder, getMySentOffers, withdrawOffer };
+const acceptOffer = (orderId) => (dispatch) => {
+  var bodyFormData = new FormData();
+  bodyFormData.append("Id", orderId);
+  bodyFormData.append("statusId", "2");
+  axios({
+    method: "put",
+    url: config.ENDPOINT_ORDER,
+    data: bodyFormData,
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => dispatch(getMySentOffers()));
+};
+
+export { addOrder, getMySentOffers, withdrawOffer, acceptOffer };
