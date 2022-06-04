@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import config from "../config";
-import { getUserById } from "../actions";
+import { getUserById, withdrawOffer } from "../actions";
 import Loading from "./Loading";
 import Modal from "./Modal";
 import SendOffer from "./SendOffer";
@@ -30,8 +30,10 @@ function ProductDetail(props) {
     props.brands.length > 0 &&
     props.colors.length > 0 &&
     props.useCases.length > 0 &&
+    props.mySentOffers.length > -1 &&
     !!product &&
-    Object.keys(product).indexOf("userId") > -1 ? (
+    Object.keys(product).indexOf("userId") > -1 &&
+    !!props.productDetailUser ? (
     <div className="row mb-2 mt-2 content">
       <div className="col-xl-6">
         <div className="card mb-3">
@@ -161,22 +163,39 @@ function ProductDetail(props) {
               </ul>
             }
           </div>
-          <div className="card-footer">
-            <span
-              className="btn btn-primary float-end cp ms-1"
-              onClick={() => {}}
-            >
+          <div className="card-footer text-end">
+            <span className="btn btn-primary cp ms-1" onClick={() => {}}>
               {props.language.buy}
             </span>
-            {product.isOfferable && (
-              <Modal
-                modalId="sendOffer"
-                title={props.language.sendOffer}
-                buttonText={props.language.sendOffer}
-                buttonClassName="btn btn-primary float-end cp ms-1"
+            {product.isOfferable &&
+              // == true ? Teklif ver : Withdraw
+              !props.mySentOffers.find(
+                (order) => order.productId + "" === product.id + ""
+              ) && (
+                <Modal
+                  modalId="sendOffer"
+                  title={props.language.sendOffer}
+                  buttonText={props.language.sendOffer}
+                  buttonClassName="btn btn-primary cp ms-1"
+                >
+                  <SendOffer product={product} />
+                </Modal>
+              )}
+            {!!props.mySentOffers.find(
+              (order) => order.productId + "" === product.id + ""
+            ) && (
+              <button
+                className="btn btn-danger ms-1"
+                onClick={() => {
+                  props.withdrawOffer(
+                    props.mySentOffers.find(
+                      (order) => order.productId + "" === product.id + ""
+                    ).id
+                  );
+                }}
               >
-                <SendOffer product={product} />
-              </Modal>
+                {props.language.withdrawOffer}
+              </button>
             )}
           </div>
         </div>
@@ -198,8 +217,10 @@ export default connect(
     colors: state.colors,
     useCases: state.useCases,
     productDetailUser: state.productDetailUser,
+    mySentOffers: state.mySentOffers,
   }),
   {
     getUserById,
+    withdrawOffer,
   }
 )(ProductDetail);

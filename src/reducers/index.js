@@ -14,6 +14,8 @@ const INITIAL_STATE = {
   addProductSuccess: {},
   productDetailUser: {},
   addOrderSuccess: {},
+  mySentOffers: {},
+  withdrawOfferSuccess: {},
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -40,6 +42,12 @@ export const reducer = (state = INITIAL_STATE, action) => {
 
     case "ADD_ORDERS_SUCCESS":
       return { ...state, addOrderSuccess: action.payload };
+
+    case "MY_SENT_OFFERS_SUCCESS":
+      return { ...state, mySentOffers: action.payload };
+
+    case "WITHDRAW_OFFER_SUCCESS":
+      return { ...state, withdrawOfferSuccess: action.payload };
 
     case "ADD_USER_SUCCESS":
       return { ...state, addUserSuccess: action.payload };

@@ -11,7 +11,8 @@ var config = {
   ENDPOINT_USER_LOGIN: base + "api/Users/Login",
   ENDPOINT_ADD_PRODUCT: base + "api/Products",
   ENDPOINT_PRODUCT_PICTURE_UPLOAD: base + "api/Products/PictureUpload",
-  ENDPOINT_ADD_ORDER: base + "api/Orders",
+  ENDPOINT_ORDER: base + "api/Orders",
+  ENDPOINT_GET_BY_USER_ID_ORDER: base + "api/Orders/GetByUserIdOrder",
 };
 
 export default config;

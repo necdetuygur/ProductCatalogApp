@@ -8,6 +8,7 @@ import {
   getBrands,
   getColors,
   getUseCases,
+  getMySentOffers,
 } from "../actions";
 import { useNavigate } from "react-router";
 import HeaderButtons from "./HeaderButtons";
@@ -20,6 +21,7 @@ function Header(props) {
     props.getBrands();
     props.getColors();
     props.getUseCases();
+    props.getMySentOffers();
     // eslint-disable-next-line
   }, []);
 
@@ -86,5 +88,13 @@ export default connect(
     products: state.products,
     selectedCategory: state.selectedCategory,
   }),
-  { getCategories, getProducts, setCategory, getBrands, getColors, getUseCases }
+  {
+    getCategories,
+    getProducts,
+    setCategory,
+    getBrands,
+    getColors,
+    getUseCases,
+    getMySentOffers,
+  }
 )(Header);

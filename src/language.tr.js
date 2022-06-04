@@ -46,6 +46,8 @@ var language = {
   orderStatus_1: "Teklif Verildi",
   orderStatus_2: "Teklif Onaylandı",
   orderStatus_3: "Satın Alındı",
+  showProduct: "Ürünü Görüntüle",
+  withdrawOffer: "Teklifi Geri Çek",
 };
 
 export default language;

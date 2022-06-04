@@ -67,6 +67,7 @@ function SendOffer(props) {
       </div>
       <div className="text-end">
         <button
+          data-bs-dismiss="modal"
           className="btn btn-primary"
           onClick={() => {
             props.addOrder(order);
