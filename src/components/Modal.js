@@ -28,7 +28,9 @@ function Modal(props) {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body text-dark text-start">{props.children}</div>
+            <div className="modal-body text-dark text-start">
+              {props.children}
+            </div>
           </div>
         </div>
       </div>
