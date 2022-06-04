@@ -1,11 +1,13 @@
 import axios from "axios";
 import config from "../config";
+import { getProducts } from "./product";
 
 const addOrder = (order) => (dispatch) => {
   var token = localStorage.getItem("token") || "";
   var axiosConfig = { headers: { Authorization: `Bearer ${token}` } };
   axios.post(config.ENDPOINT_ORDER, order, axiosConfig).then((r) => {
     dispatch(getMySentOffers());
+    dispatch(getProducts());
     return dispatch({
       type: "ADD_ORDERS_SUCCESS",
       payload: r.data,
@@ -24,9 +26,10 @@ const getMySentOffers = () => (dispatch) => {
 };
 
 const withdrawOffer = (orderId) => (dispatch) => {
-  axios
-    .delete(config.ENDPOINT_ORDER + "/" + orderId)
-    .then((r) => dispatch(getMySentOffers()));
+  axios.delete(config.ENDPOINT_ORDER + "/" + orderId).then((r) => {
+    dispatch(getProducts());
+    return dispatch(getMySentOffers());
+  });
 };
 
 const acceptOffer = (orderId) => (dispatch) => {
@@ -38,7 +41,10 @@ const acceptOffer = (orderId) => (dispatch) => {
     url: config.ENDPOINT_ORDER,
     data: bodyFormData,
     headers: { "Content-Type": "multipart/form-data" },
-  }).then((r) => dispatch(getMySentOffers()));
+  }).then((r) => {
+    dispatch(getProducts());
+    return dispatch(getMySentOffers());
+  });
 };
 
 const buyOrder = (orderId, productId) => (dispatch) => {
@@ -51,7 +57,10 @@ const buyOrder = (orderId, productId) => (dispatch) => {
     url: config.ENDPOINT_ORDER,
     data: bodyFormData,
     headers: { "Content-Type": "multipart/form-data" },
-  }).then((r) => dispatch(getMySentOffers()));
+  }).then((r) => {
+    dispatch(getProducts());
+    return dispatch(getMySentOffers());
+  });
 
   bodyFormData = new FormData();
   bodyFormData.append("Id", productId);
@@ -61,7 +70,10 @@ const buyOrder = (orderId, productId) => (dispatch) => {
     url: config.ENDPOINT_PRODUCT,
     data: bodyFormData,
     headers: { "Content-Type": "multipart/form-data" },
-  }).then((r) => dispatch(getMySentOffers()));
+  }).then((r) => {
+    dispatch(getProducts());
+    return dispatch(getMySentOffers());
+  });
 };
 
 const buyProduct = (product) => (dispatch) => {
@@ -84,7 +96,10 @@ const buyProduct = (product) => (dispatch) => {
     url: config.ENDPOINT_PRODUCT,
     data: bodyFormData,
     headers: { "Content-Type": "multipart/form-data" },
-  }).then((r) => dispatch(getMySentOffers()));
+  }).then((r) => {
+    dispatch(getProducts());
+    return dispatch(getMySentOffers());
+  });
 };
 
 export {
