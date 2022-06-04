@@ -73,6 +73,19 @@ function ProductDetail(props) {
               <ul className="list-group list-group-flush">
                 {/*  */}
 
+                {product.isSold && (
+                  <li className="list-group-item justify-content-between">
+                    <div className="alert alert-danger">
+                      {props.language.thisProductIsSold}
+                    </div>
+                  </li>
+                )}
+
+                <li className="d-flex list-group-item justify-content-between">
+                  <div className="col-4">{props.language.productName}</div>
+                  <div className="col-4">{product.name}</div>
+                </li>
+
                 <li className="d-flex list-group-item justify-content-between">
                   <div className="col-4">{props.language.user}</div>
                   <div className="col-4">
@@ -81,11 +94,6 @@ function ProductDetail(props) {
                         " " +
                         props.productDetailUser.surname}
                   </div>
-                </li>
-
-                <li className="d-flex list-group-item justify-content-between">
-                  <div className="col-4">{props.language.productName}</div>
-                  <div className="col-4">{product.name}</div>
                 </li>
 
                 <li className="d-flex list-group-item justify-content-between">

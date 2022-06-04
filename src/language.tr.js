@@ -55,6 +55,7 @@ var language = {
   makeBuy: "Satın alma işlemini gerçekleştir",
   success: "İşlem Başarıyla Gerçekleştirildi",
   ERR_EMAILINVALID: "E-Posta Geçersiz",
+  thisProductIsSold: "Bu ürün satıldı",
 };
 
 export default language;
