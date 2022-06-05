@@ -52,7 +52,7 @@ function AddProduct(props) {
             <div className="card-body">
               {!(uploadedImage.indexOf("ERR") > -1) && uploadedImage !== "" && (
                 <button
-                  class="btn btn-danger btn-sm w-100"
+                  className="btn btn-danger btn-sm w-100"
                   onClick={() => {
                     setUploadedImage("");
                     setProduct({ ...product, picture: "" });
