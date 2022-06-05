@@ -3,18 +3,35 @@ import { connect } from "react-redux";
 import { login } from "../actions";
 import { useNavigate } from "react-router";
 
-function validateEmail(email) {
-  var re = /\S+@\S+\.\S+/;
-  return re.test(email) && email.length > 8;
-}
-
 function Login(props) {
   let navigate = useNavigate();
   const [user, setUser] = React.useState({});
   const [mailErr, setMailErr] = React.useState(false);
+  const [passwordErr, setPasswordErr] = React.useState("");
+
   React.useEffect(() => {
     props.token && navigate("/");
   });
+
+  function validateEmail(email) {
+    var re = /\S+@\S+\.\S+/;
+    return re.test(email) && email.length > 8;
+  }
+  function validatePassword() {
+    if (!!user.password && user.password.length < 8) {
+      setPasswordErr(props.language.ERR_PASSWORD_SHORT);
+      return false;
+    } else if (user.password.length > 19) {
+      setPasswordErr(props.language.ERR_PASSWORD_LONG);
+      return false;
+    }
+    setPasswordErr("");
+    return true;
+  }
+
+  function doLogin() {
+    validateEmail(user.email) && validatePassword() && props.login(user);
+  }
 
   return (
     <div className="row justify-content-center align-middle">
@@ -34,7 +51,7 @@ function Login(props) {
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    props.login(user);
+                    doLogin();
                   }
                 }}
               />
@@ -54,20 +71,24 @@ function Login(props) {
                 placeholder={props.language.password}
                 onChange={(e) => {
                   setUser({ ...user, password: e.target.value });
+                  validatePassword();
                 }}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    props.login(user);
+                    doLogin();
                   }
                 }}
               />
             </div>
+            {passwordErr && (
+              <div className="alert alert-danger mb-3">{passwordErr}</div>
+            )}
           </div>
           <div className="card-footer text-end">
             <button
               className="btn btn-primary"
               onClick={() => {
-                validateEmail(user.email) && props.login(user);
+                doLogin();
               }}
             >
               {props.language.login}
