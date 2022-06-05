@@ -12,6 +12,7 @@ import {
 } from "../actions";
 import { useNavigate } from "react-router";
 import HeaderButtons from "./HeaderButtons";
+import Loading from "../assets/loading.gif";
 
 function Header(props) {
   let navigate = useNavigate();
@@ -50,8 +51,7 @@ function Header(props) {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            {props.categories &&
-              props.categories.length > 0 &&
+            {props.categories && props.categories.length > 0 ? (
               props.categories.map((category) => (
                 <li className="nav-item" key={category.id}>
                   <span
@@ -70,7 +70,18 @@ function Header(props) {
                     {category.name}
                   </span>
                 </li>
-              ))}
+              ))
+            ) : (
+              <img
+                src={Loading}
+                alt="..."
+                style={{
+                  margin: "0 0 0 25px",
+                  width: "25px",
+                  filter: "drop-shadow(5px 5px 5px #222);",
+                }}
+              />
+            )}
           </ul>
         </div>
         <div className="d-flex">
