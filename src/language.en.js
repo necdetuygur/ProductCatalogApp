@@ -57,6 +57,7 @@ var language = {
   success: "Process Successfully",
   ERR_EMAILINVALID: "E-Mail Invalid",
   thisProductIsSold: "This product is sold",
+  removeImage: "Remove Image",
 };
 
 export default language;

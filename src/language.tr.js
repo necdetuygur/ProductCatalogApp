@@ -56,6 +56,7 @@ var language = {
   success: "İşlem Başarıyla Gerçekleştirildi",
   ERR_EMAILINVALID: "E-Posta Geçersiz",
   thisProductIsSold: "Bu ürün satıldı",
+  removeImage: "Remove Image",
 };
 
 export default language;

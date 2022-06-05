@@ -50,6 +50,17 @@ function AddProduct(props) {
         <div className="col-md-6">
           <div className="card mb-3">
             <div className="card-body">
+              {!(uploadedImage.indexOf("ERR") > -1) && uploadedImage !== "" && (
+                <button
+                  class="btn btn-danger btn-sm w-100"
+                  onClick={() => {
+                    setUploadedImage("");
+                    setProduct({ ...product, picture: "" });
+                  }}
+                >
+                  {props.language.removeImage}
+                </button>
+              )}
               {!(uploadedImage.indexOf("ERR") > -1) && (
                 <img
                   style={{ width: "100%", minHeight: "300px" }}
