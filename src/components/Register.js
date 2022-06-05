@@ -30,10 +30,7 @@ function Register(props) {
     // Passwords
     if (user.password !== user.passwordAgain) {
       saveErrors.push(props.language.ERR_PASSWORD_NOT_EQUAL);
-    } else if (
-      (!!user.password && user.password.length < 8) ||
-      (!!user.passwordAgain && user.passwordAgain.length < 8)
-    ) {
+    } else if (user.password.length < 8 || user.passwordAgain.length < 8) {
       saveErrors.push(props.language.ERR_PASSWORD_SHORT);
     } else if (user.password.length > 19 || user.passwordAgain.length > 19) {
       saveErrors.push(props.language.ERR_PASSWORD_LONG);
