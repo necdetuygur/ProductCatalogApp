@@ -30,9 +30,9 @@ var language = {
   ERR_EXTENSION: "File extension is not accepted",
   ERR_SIZE:
     "The size of the image you are trying to upload is larger than 400 KB",
-  ERR_PASSWORD_NOT_EQUAL: "Passwords is not equal",
-  ERR_PASSWORD_SHORT: "Passwords is short",
-  ERR_PASSWORD_LONG: "Passwords is long",
+  ERR_PASSWORD_NOT_EQUAL: "Password is not equal",
+  ERR_PASSWORD_SHORT: "Password is short",
+  ERR_PASSWORD_LONG: "Password is long",
   logout: "Log out",
   sendOffer: "Send Offer",
   buy: "Buy",
@@ -58,6 +58,10 @@ var language = {
   ERR_EMAILINVALID: "E-Mail Invalid",
   thisProductIsSold: "This product is sold",
   removeImage: "Remove Image",
+  ERR_PRODUCTNAMELONG: "Product name is too long",
+  ERR_PRODUCTDESCRIPTIONLONG: "Product description is too long",
+  ERR_CATEGORY_REQUIRED: "Product category is required",
+  ERR_USECASE_REQUIRED: "Product use case is required",
 };
 
 export default language;

@@ -56,7 +56,11 @@ var language = {
   success: "İşlem Başarıyla Gerçekleştirildi",
   ERR_EMAILINVALID: "E-Posta Geçersiz",
   thisProductIsSold: "Bu ürün satıldı",
-  removeImage: "Remove Image",
+  removeImage: "Resmi kaldır",
+  ERR_PRODUCTNAMELONG: "Ürün ismi 100 karakterden uzun olamaz",
+  ERR_PRODUCTDESCRIPTIONLONG: "Ürün açıklaması 500 karakterden uzun olamaz",
+  ERR_CATEGORY_REQUIRED: "Ürün kategorisi seçilmesi zorunludur",
+  ERR_USECASE_REQUIRED: "Ürün kullanım durumu seçilmesi zorunludur",
 };
 
 export default language;

@@ -12,6 +12,7 @@ function AddProduct(props) {
   });
   const [uploadedImage, setUploadedImage] = React.useState("");
   const [loading, setLoading] = React.useState(false);
+  const [errors, setErrors] = React.useState([]);
 
   function submitEvent() {
     setLoading(true);
@@ -41,6 +42,35 @@ function AddProduct(props) {
     };
     xhr.open("POST", url);
     xhr.send(formData);
+  }
+
+  function doSave() {
+    var saveErrors = [];
+    if (!!product.name && product.name.length > 99) {
+      saveErrors.push(props.language.ERR_PRODUCTNAMELONG);
+    }
+    if (!!product.description && product.description.length > 499) {
+      saveErrors.push(props.language.ERR_PRODUCTDESCRIPTIONLONG);
+    }
+    if (!product.categoryId) {
+      saveErrors.push(props.language.ERR_CATEGORY_REQUIRED);
+    }
+    if (!product.useCaseId) {
+      saveErrors.push(props.language.ERR_USECASE_REQUIRED);
+    }
+    if (!uploadedImage) {
+      saveErrors.push(props.language.pleasePictureSelect);
+    }
+    setErrors(saveErrors);
+    if (saveErrors.length > 0) {
+      setLoading(false);
+      return;
+    }
+    props.addProduct(product);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1e3);
   }
 
   return (
@@ -76,11 +106,16 @@ function AddProduct(props) {
           <div className="card mb-3">
             <div className="card-header">{props.language.addProduct}</div>
             <div className="card-body p-2">
-              {!uploadedImage && (
-                <div className="alert alert-danger p-2 my-2" role="alert">
-                  {props.language.pleasePictureSelect}
-                </div>
-              )}
+              {errors.length > 0 &&
+                errors.map((error) => (
+                  <div
+                    key={error}
+                    className="alert alert-danger p-2 my-2"
+                    role="alert"
+                  >
+                    {error}
+                  </div>
+                ))}
               {uploadedImage.indexOf("ERR_EXTENSION") > -1 && (
                 <div className="alert alert-danger p-2 my-2" role="alert">
                   {props.language.ERR_EXTENSION}
@@ -269,11 +304,7 @@ function AddProduct(props) {
               <span
                 className="btn btn-primary float-end cp"
                 onClick={() => {
-                  props.addProduct(product);
-                  setLoading(true);
-                  setTimeout(() => {
-                    setLoading(false);
-                  }, 1e3);
+                  doSave();
                 }}
               >
                 {props.language.save}
