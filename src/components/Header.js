@@ -78,7 +78,6 @@ function Header(props) {
                 style={{
                   margin: "0 0 0 25px",
                   width: "25px",
-                  filter: "drop-shadow(5px 5px 5px #222);",
                 }}
               />
             )}
