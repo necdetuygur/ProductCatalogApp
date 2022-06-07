@@ -72,14 +72,32 @@ function Header(props) {
                 </li>
               ))
             ) : (
-              <img
-                src={Loading}
-                alt="..."
-                style={{
-                  margin: "0 0 0 25px",
-                  width: "40px",
-                }}
-              />
+              <>
+                <img
+                  src={Loading}
+                  alt="..."
+                  style={{
+                    margin: "0 0 0 25px",
+                    width: "40px",
+                  }}
+                />
+                <img
+                  src={Loading}
+                  alt="..."
+                  style={{
+                    margin: "0 0 0 25px",
+                    width: "40px",
+                  }}
+                />
+                <img
+                  src={Loading}
+                  alt="..."
+                  style={{
+                    margin: "0 0 0 25px",
+                    width: "40px",
+                  }}
+                />
+              </>
             )}
           </ul>
         </div>
