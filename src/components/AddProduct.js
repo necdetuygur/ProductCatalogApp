@@ -16,32 +16,40 @@ function AddProduct(props) {
 
   function submitEvent() {
     setLoading(true);
-    var url = config.ENDPOINT_PRODUCT_PICTURE_UPLOAD;
     const file = document.getElementById("file-input").files[0];
-    const formData = new FormData();
-    var fileExtension = file.name.split(".");
-    fileExtension = fileExtension[fileExtension.length - 1];
-    var acceptExtensions = ["jpg", "jpeg", "png"];
-    if (!(acceptExtensions.indexOf(fileExtension) > -1)) {
-      setUploadedImage("ERR_EXTENSION");
+    console.log("file", !file);
+    if (!file) {
+      setUploadedImage("ERR_NO_SELECTED");
       setLoading(false);
       return;
-    }
+    } else {
+      setLoading(true);
+      var url = config.ENDPOINT_PRODUCT_PICTURE_UPLOAD;
+      const formData = new FormData();
+      var fileExtension = file.name.split(".");
+      fileExtension = fileExtension[fileExtension.length - 1];
+      var acceptExtensions = ["jpg", "jpeg", "png"];
+      if (!(acceptExtensions.indexOf(fileExtension) > -1)) {
+        setUploadedImage("ERR_EXTENSION");
+        setLoading(false);
+        return;
+      }
 
-    if (file.size > 400 * 1024) {
-      setUploadedImage("ERR_SIZE");
-      setLoading(false);
-      return;
+      if (file.size > 400 * 1024) {
+        setUploadedImage("ERR_SIZE");
+        setLoading(false);
+        return;
+      }
+      formData.append("file", file);
+      const xhr = new XMLHttpRequest();
+      xhr.onload = () => {
+        setUploadedImage(xhr.responseText);
+        setProduct({ ...product, picture: xhr.responseText });
+        setLoading(false);
+      };
+      xhr.open("POST", url);
+      xhr.send(formData);
     }
-    formData.append("file", file);
-    const xhr = new XMLHttpRequest();
-    xhr.onload = () => {
-      setUploadedImage(xhr.responseText);
-      setProduct({ ...product, picture: xhr.responseText });
-      setLoading(false);
-    };
-    xhr.open("POST", url);
-    xhr.send(formData);
   }
 
   function doSave() {
@@ -116,6 +124,11 @@ function AddProduct(props) {
                     {error}
                   </div>
                 ))}
+              {uploadedImage.indexOf("ERR_NO_SELECTED") > -1 && (
+                <div className="alert alert-danger p-2 my-2" role="alert">
+                  {props.language.ERR_NO_SELECTED}
+                </div>
+              )}
               {uploadedImage.indexOf("ERR_EXTENSION") > -1 && (
                 <div className="alert alert-danger p-2 my-2" role="alert">
                   {props.language.ERR_EXTENSION}

@@ -22,9 +22,9 @@ function Header(props) {
     props.getBrands();
     props.getColors();
     props.getUseCases();
-    props.getMySentOffers();
+    props.token && props.getMySentOffers();
     // eslint-disable-next-line
-  }, []);
+  }, [props.token]);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white mb-2">
@@ -97,6 +97,7 @@ export default connect(
     categories: state.categories,
     products: state.products,
     selectedCategory: state.selectedCategory,
+    token: state.token,
   }),
   {
     getCategories,

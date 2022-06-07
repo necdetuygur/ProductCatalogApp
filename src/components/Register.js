@@ -28,7 +28,11 @@ function Register(props) {
     }
 
     // Passwords
-    if (user.password !== user.passwordAgain) {
+    if (
+      !!user.password &&
+      !!user.passwordAgain &&
+      user.password !== user.passwordAgain
+    ) {
       saveErrors.push(props.language.ERR_PASSWORD_NOT_EQUAL);
     } else if (user.password.length < 8 || user.passwordAgain.length < 8) {
       saveErrors.push(props.language.ERR_PASSWORD_SHORT);
@@ -53,7 +57,7 @@ function Register(props) {
               errors.map((error) => (
                 <div
                   key={error}
-                  className="alert alert-danger p-2 my-2"
+                  className="alert alert-danger p-2 mb-3"
                   role="alert"
                 >
                   {error}
