@@ -17,7 +17,6 @@ function AddProduct(props) {
   function submitEvent() {
     setLoading(true);
     const file = document.getElementById("file-input").files[0];
-    console.log("file", !file);
     if (!file) {
       setUploadedImage("ERR_NO_SELECTED");
       setLoading(false);
