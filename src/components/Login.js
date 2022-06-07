@@ -18,7 +18,7 @@ function Login(props) {
     return re.test(email) && email.length > 8;
   }
   function validatePassword() {
-    if (!!user.password && user.password.length < 8) {
+    if ((!!user.password && user.password.length < 8) || !user.password) {
       setPasswordErr(props.language.ERR_PASSWORD_SHORT);
       return false;
     } else if (!!user.password && user.password.length > 19) {
