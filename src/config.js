@@ -1,3 +1,4 @@
+// var base = "https://localhost:7170/";
 var base = "https://aipu.herokuapp.com/";
 
 var config = {
