@@ -17,23 +17,38 @@ function MyReceivedOffers(props) {
   let navigate = useNavigate();
   const [offers, setOffers] = React.useState([]);
   const [pageLoaded, setPageLoaded] = React.useState(false);
-  React.useEffect(() => {
+
+  const loadOffers = async () => {
+    var tempOffers = [];
+    setOffers([]);
+    setPageLoaded(false);
+    var myProductIds = [];
     props.products.forEach((product) => {
       if (product.userId + "" === localStorage.getItem("userId") + "") {
-        getProductOffers(product.id).then((r) => {
-          r.data.forEach((offer) => {
-            if (offer.statusId * 1 === 1) {
-              setOffers([...offers, offer]);
-            }
-          });
-        });
+        myProductIds.push(product.id);
       }
     });
+    const allOffersResponses = await Promise.all(
+      myProductIds.map(getProductOffers)
+    );
+    allOffersResponses.forEach((r) => {
+      r.data.forEach((offer) => {
+        if (offer.statusId * 1 === 1) {
+          tempOffers.push(offer);
+        }
+      });
+    });
+    setOffers(tempOffers);
+    setPageLoaded(true);
+  };
+
+  React.useEffect(() => {
+    loadOffers();
     setTimeout(() => {
       setPageLoaded(true);
     }, 1e3);
     // eslint-disable-next-line
-  }, [props.products.length]);
+  }, [props.products.length, props.acceptOfferSuccess]);
 
   return (
     <>
@@ -112,6 +127,7 @@ export default connect(
     language: state.language,
     token: state.token,
     products: state.products,
+    acceptOfferSuccess: state.acceptOfferSuccess,
   }),
   { withdrawOffer, acceptOffer }
 )(MyReceivedOffers);

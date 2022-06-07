@@ -17,6 +17,7 @@ const INITIAL_STATE = {
   mySentOffers: {},
   withdrawOfferSuccess: {},
   loginError: 0,
+  acceptOfferSuccess: 0,
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -82,6 +83,9 @@ export const reducer = (state = INITIAL_STATE, action) => {
 
     case "GET_PRODUCTS_SUCCESS":
       return { ...state, products: action.payload };
+
+    case "ACCEPT_OFFER_SUCCESS":
+      return { ...state, acceptOfferSuccess: action.payload };
 
     case "SET_CATEGORY":
       return { ...state, selectedCategory: action.payload };

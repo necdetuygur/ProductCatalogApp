@@ -42,6 +42,16 @@ const acceptOffer = (orderId) => (dispatch) => {
     data: bodyFormData,
     headers: { "Content-Type": "multipart/form-data" },
   }).then((r) => {
+    dispatch({
+      type: "ACCEPT_OFFER_SUCCESS",
+      payload: r.data.success,
+    });
+    setTimeout(() => {
+      dispatch({
+        type: "ACCEPT_OFFER_SUCCESS",
+        payload: 0,
+      });
+    }, 300);
     dispatch(getProducts());
     return dispatch(getMySentOffers());
   });
