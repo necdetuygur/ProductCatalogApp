@@ -12,7 +12,7 @@ import {
 } from "../actions";
 import { useNavigate } from "react-router";
 import HeaderButtons from "./HeaderButtons";
-import Loading from "../assets/loading.gif";
+import Loading from "../assets/loading.svg";
 
 function Header(props) {
   let navigate = useNavigate();
@@ -77,7 +77,7 @@ function Header(props) {
                 alt="..."
                 style={{
                   margin: "0 0 0 25px",
-                  width: "25px",
+                  width: "40px",
                 }}
               />
             )}
