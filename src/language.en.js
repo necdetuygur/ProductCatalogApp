@@ -62,6 +62,7 @@ var language = {
   ERR_PRODUCTDESCRIPTIONLONG: "Product description is too long",
   ERR_CATEGORY_REQUIRED: "Product category is required",
   ERR_USECASE_REQUIRED: "Product use case is required",
+  ERR_LOGIN: "Your e-mail address or password is incorrect",
 };
 
 export default language;

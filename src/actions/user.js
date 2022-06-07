@@ -27,12 +27,20 @@ export const getUserById = (id) => (dispatch) => {
 };
 
 export const login = (user) => (dispatch) => {
-  axios.post(config.ENDPOINT_USER_LOGIN, user).then((r) =>
-    dispatch({
-      type: "USER_LOGIN_SUCCESS",
-      payload: r.data,
+  axios
+    .post(config.ENDPOINT_USER_LOGIN, user)
+    .then((r) => {
+      return dispatch({
+        type: "USER_LOGIN_SUCCESS",
+        payload: r.data,
+      });
     })
-  );
+    .catch((err) => {
+      return dispatch({
+        type: "USER_LOGIN_ERROR",
+        payload: err.response.status,
+      });
+    });
 };
 
 export const logout = () => {

@@ -21,7 +21,7 @@ function Login(props) {
     if (!!user.password && user.password.length < 8) {
       setPasswordErr(props.language.ERR_PASSWORD_SHORT);
       return false;
-    } else if (user.password.length > 19) {
+    } else if (!!user.password && user.password.length > 19) {
       setPasswordErr(props.language.ERR_PASSWORD_LONG);
       return false;
     }
@@ -83,6 +83,11 @@ function Login(props) {
             {passwordErr && (
               <div className="alert alert-danger mb-3">{passwordErr}</div>
             )}
+            {props.loginError === 404 && (
+              <div className="alert alert-danger p-2 mb-1" role="alert">
+                {props.language.ERR_LOGIN}
+              </div>
+            )}
           </div>
           <div className="card-footer text-end">
             <button
@@ -104,6 +109,7 @@ export default connect(
   (state) => ({
     language: state.language,
     token: state.token,
+    loginError: state.loginError,
   }),
   {
     login,

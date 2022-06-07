@@ -16,6 +16,7 @@ const INITIAL_STATE = {
   addOrderSuccess: {},
   mySentOffers: {},
   withdrawOfferSuccess: {},
+  loginError: 0,
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -67,10 +68,16 @@ export const reducer = (state = INITIAL_STATE, action) => {
       localStorage.setItem("userId", action.payload.id);
       localStorage.setItem("name", action.payload.name);
       localStorage.setItem("surname", action.payload.surname);
-      return { ...state, token: action.payload.token };
+      return { ...state, token: action.payload.token, loginError: 0 };
+
+    case "USER_LOGIN_ERROR":
+      return { ...state, loginError: action.payload };
 
     case "USER_LOGOUT_SUCCESS":
       localStorage.setItem("token", "");
+      localStorage.setItem("userId", "");
+      localStorage.setItem("name", "");
+      localStorage.setItem("surname", "");
       return { ...state, token: "" };
 
     case "GET_PRODUCTS_SUCCESS":

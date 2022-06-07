@@ -61,6 +61,7 @@ var language = {
   ERR_PRODUCTDESCRIPTIONLONG: "Ürün açıklaması 500 karakterden uzun olamaz",
   ERR_CATEGORY_REQUIRED: "Ürün kategorisi seçilmesi zorunludur",
   ERR_USECASE_REQUIRED: "Ürün kullanım durumu seçilmesi zorunludur",
+  ERR_LOGIN: "E-Posta adresiniz veya şifreniz yanlış",
 };
 
 export default language;
