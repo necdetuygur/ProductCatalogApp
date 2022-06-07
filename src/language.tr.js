@@ -62,6 +62,7 @@ var language = {
   ERR_CATEGORY_REQUIRED: "Ürün kategorisi seçilmesi zorunludur",
   ERR_USECASE_REQUIRED: "Ürün kullanım durumu seçilmesi zorunludur",
   ERR_LOGIN: "E-Posta adresiniz veya şifreniz yanlış",
+  ERR_NO_SELECTED: "Resim seçilmedi, lütfen yüklemek istediğiniz resmi seçin",
 };
 
 export default language;

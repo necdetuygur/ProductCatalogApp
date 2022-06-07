@@ -63,6 +63,8 @@ var language = {
   ERR_CATEGORY_REQUIRED: "Product category is required",
   ERR_USECASE_REQUIRED: "Product use case is required",
   ERR_LOGIN: "Your e-mail address or password is incorrect",
+  ERR_NO_SELECTED:
+    "No image selected, please select the image you want to upload",
 };
 
 export default language;
