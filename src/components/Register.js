@@ -12,12 +12,24 @@ function validateEmail(email) {
 
 function Register(props) {
   let navigate = useNavigate();
-  const [user, setUser] = React.useState({});
+  const [user, setUser] = React.useState({
+    name: "",
+    surname: "",
+    password: "",
+    passwordAgain: "",
+    email: "",
+  });
   const [errors, setErrors] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
     props.token && navigate("/");
-  });
+    if (!props.addUserError.success) {
+      var er = [props.language.ERR_EMAIL_EXISTS];
+      setErrors(er);
+      setLoading(false);
+    }
+    // eslint-disable-next-line
+  }, [props.addUserError.success]);
   function save() {
     setLoading(true);
     var saveErrors = [];
@@ -28,22 +40,30 @@ function Register(props) {
     }
 
     // Passwords
-    if (
-      !!user.password &&
-      !!user.passwordAgain &&
-      user.password !== user.passwordAgain
-    ) {
+    if (user.password !== user.passwordAgain) {
       saveErrors.push(props.language.ERR_PASSWORD_NOT_EQUAL);
     } else if (user.password.length < 8 || user.passwordAgain.length < 8) {
       saveErrors.push(props.language.ERR_PASSWORD_SHORT);
     } else if (user.password.length > 19 || user.passwordAgain.length > 19) {
       saveErrors.push(props.language.ERR_PASSWORD_LONG);
     }
+
+    // Name
+    if (user.name.length < 1) {
+      saveErrors.push(props.language.ERR_NAME_SHORT);
+    }
+
+    // Surname
+    if (user.surname.length < 1) {
+      saveErrors.push(props.language.ERR_SURNAME_SHORT);
+    }
+
     setErrors(saveErrors);
     if (saveErrors.length > 0) {
       setLoading(false);
       return;
     }
+
     props.addUser(user);
   }
 
@@ -169,6 +189,7 @@ export default connect(
     language: state.language,
     addUserSuccess: state.addUserSuccess,
     token: state.token,
+    addUserError: state.addUserError,
   }),
   { addUser, login }
 )(Register);

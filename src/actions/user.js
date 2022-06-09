@@ -9,12 +9,19 @@ export const addUser = (user) => (dispatch) => {
     });
   }, 3e3);
 
-  axios.post(config.ENDPOINT_USER, user).then((r) =>
-    dispatch({
-      type: "ADD_USER_SUCCESS",
-      payload: r.data,
-    })
-  );
+  axios.post(config.ENDPOINT_USER, user).then((r) => {
+    if (r.data.success) {
+      return dispatch({
+        type: "ADD_USER_SUCCESS",
+        payload: r.data,
+      });
+    } else {
+      return dispatch({
+        type: "ADD_USER_ERROR",
+        payload: r.data,
+      });
+    }
+  });
 };
 
 export const getUserById = (id) => (dispatch) => {

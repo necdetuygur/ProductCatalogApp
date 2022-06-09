@@ -65,6 +65,9 @@ var language = {
   ERR_LOGIN: "Your e-mail address or password is incorrect",
   ERR_NO_SELECTED:
     "No image selected, please select the image you want to upload",
+  ERR_EMAIL_EXISTS: "E-Mail already exists",
+  ERR_NAME_SHORT: "Name is short",
+  ERR_SURNAME_SHORT: "Surname is short",
 };
 
 export default language;

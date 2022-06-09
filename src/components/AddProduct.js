@@ -65,9 +65,6 @@ function AddProduct(props) {
     if (!product.useCaseId) {
       saveErrors.push(props.language.ERR_USECASE_REQUIRED);
     }
-    if (!uploadedImage) {
-      saveErrors.push(props.language.pleasePictureSelect);
-    }
     setErrors(saveErrors);
     if (saveErrors.length > 0) {
       setLoading(false);

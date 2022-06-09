@@ -49,7 +49,7 @@ var language = {
   showProduct: "Ürünü Görüntüle",
   withdrawOffer: "Teklifi Geri Çek",
   rejectOffer: "Teklifi Reddet",
-  acceptOffer: "Accept Offer",
+  acceptOffer: "Teklifi Onayla",
   noData: "Veri yok",
   saleOk: "Satın alma başarıyla gerçekleşti",
   makeBuy: "Satın alma işlemini gerçekleştir",
@@ -63,6 +63,9 @@ var language = {
   ERR_USECASE_REQUIRED: "Ürün kullanım durumu seçilmesi zorunludur",
   ERR_LOGIN: "E-Posta adresiniz veya şifreniz yanlış",
   ERR_NO_SELECTED: "Resim seçilmedi, lütfen yüklemek istediğiniz resmi seçin",
+  ERR_EMAIL_EXISTS: "Bu E-Posta adresi kayıtlıdır",
+  ERR_NAME_SHORT: "İsim kısa",
+  ERR_SURNAME_SHORT: "Soyisim kısa",
 };
 
 export default language;

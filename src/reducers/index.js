@@ -18,6 +18,7 @@ const INITIAL_STATE = {
   withdrawOfferSuccess: {},
   loginError: 0,
   acceptOfferSuccess: 0,
+  addUserError: { success: true },
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -57,6 +58,8 @@ export const reducer = (state = INITIAL_STATE, action) => {
 
     case "ADD_USER_SUCCESS":
       return { ...state, addUserSuccess: action.payload };
+    case "ADD_USER_ERROR":
+      return { ...state, addUserError: action.payload };
 
     case "ADD_PRODUCTS_SUCCESS":
       return { ...state, addProductSuccess: action.payload };
