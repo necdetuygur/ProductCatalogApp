@@ -23,7 +23,6 @@ function AddProduct(props) {
       return;
     } else {
       setLoading(true);
-      var url = config.ENDPOINT_PRODUCT_PICTURE_UPLOAD;
       const formData = new FormData();
       var fileExtension = file.name.split(".");
       fileExtension = fileExtension[fileExtension.length - 1];
@@ -46,7 +45,7 @@ function AddProduct(props) {
         setProduct({ ...product, picture: xhr.responseText });
         setLoading(false);
       };
-      xhr.open("POST", url);
+      xhr.open("POST", config.ENDPOINT_PRODUCT_PICTURE_UPLOAD);
       xhr.send(formData);
     }
   }
