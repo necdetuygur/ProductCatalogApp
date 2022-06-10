@@ -33,10 +33,13 @@ function Login(props) {
 
   function doLogin() {
     setLoading(true);
+    setMailErr(!validateEmail(user.email));
+    validatePassword();
+
     validateEmail(user.email) && validatePassword() && props.login(user);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1e3);
   }
 
   return (
