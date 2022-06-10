@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="50px" height="50px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-  <circle cx="50" cy="50" r="35" stroke-width="7" stroke="#112233" stroke-dasharray="54.97787143782138 54.97787143782138" fill="none" stroke-linecap="round">
-    <animateTransform attributeName="transform" type="rotate" dur="1.3333333333333333s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
-  </circle>
-  <circle cx="50" cy="50" r="27" stroke-width="7" stroke="#778899" stroke-dasharray="42.411500823462205 42.411500823462205" stroke-dashoffset="42.411500823462205" fill="none" stroke-linecap="round">
-    <animateTransform attributeName="transform" type="rotate" dur="1.3333333333333333s" repeatCount="indefinite" keyTimes="0;1" values="0 50 50;-360 50 50"></animateTransform>
+  xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="28px" height="28px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+  <circle cx="50" cy="50" fill="none" stroke="#888888" stroke-width="15" r="32" stroke-dasharray="150.79644737231007 52.26548245743669">
+    <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 50 50;360 50 50" keyTimes="0;1"></animateTransform>
   </circle>
 </svg>

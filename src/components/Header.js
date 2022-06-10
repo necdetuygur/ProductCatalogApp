@@ -78,7 +78,6 @@ function Header(props) {
                   alt="..."
                   style={{
                     margin: "0 0 0 25px",
-                    width: "40px",
                   }}
                 />
                 <img
@@ -86,7 +85,6 @@ function Header(props) {
                   alt="..."
                   style={{
                     margin: "0 0 0 25px",
-                    width: "40px",
                   }}
                 />
                 <img
@@ -94,7 +92,6 @@ function Header(props) {
                   alt="..."
                   style={{
                     margin: "0 0 0 25px",
-                    width: "40px",
                   }}
                 />
               </>

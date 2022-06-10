@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
-import { withdrawOffer } from "../actions";
 
 function MyPurchases(props) {
   let navigate = useNavigate();
@@ -56,5 +55,5 @@ export default connect(
     products: state.products,
     withdrawOfferSuccess: state.withdrawOfferSuccess,
   }),
-  { withdrawOffer }
+  {}
 )(MyPurchases);

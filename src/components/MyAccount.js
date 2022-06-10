@@ -49,7 +49,7 @@ function MyAccount(props) {
           </li>
         </ul>
       </div>
-      <div className="card-body p-0">
+      <div className="card-body p-0" style={{ minHeight: "400px" }}>
         {currentTab === 1 && <MyReceivedOffers />}
         {currentTab === 2 && <MySentOffers />}
         {currentTab === 3 && <MyPurchases />}

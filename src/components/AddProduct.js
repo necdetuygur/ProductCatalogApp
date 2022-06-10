@@ -194,6 +194,9 @@ function AddProduct(props) {
                     setProduct({ ...product, price: e.target.value });
                   }}
                 />
+                <span className="input-group-text">
+                  {props.language.priceSign}
+                </span>
               </div>
               <div className="input-group mb-2">
                 <span className="input-group-text">
