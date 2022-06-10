@@ -65,6 +65,9 @@ function AddProduct(props) {
     if (!product.useCaseId) {
       saveErrors.push(props.language.ERR_USECASE_REQUIRED);
     }
+    if (!uploadedImage) {
+      saveErrors.push(props.language.pleasePictureSelect);
+    }
     setErrors(saveErrors);
     if (saveErrors.length > 0) {
       setLoading(false);
@@ -80,6 +83,7 @@ function AddProduct(props) {
   return (
     <>
       {props.addProductSuccess.success && <Success />}
+      {loading && <Loading />}
       <div className="row mb-2 mt-2 content">
         <div className="col-md-6">
           <div className="card mb-3">
@@ -135,179 +139,169 @@ function AddProduct(props) {
                   {props.language.ERR_SIZE}
                 </div>
               )}
-              {loading ? (
-                <Loading />
-              ) : (
-                <>
-                  <div className="input-group mb-2">
-                    <span className="input-group-text">
-                      {props.language.picture}
-                    </span>
-                    <input
-                      type="file"
-                      name="file"
-                      id="file-input"
-                      className="form-control"
-                    />
-                    <input
-                      type="submit"
-                      className="btn btn-primary"
-                      value={props.language.upload}
-                      onClick={(e) => {
-                        submitEvent(e);
-                      }}
-                    />
-                  </div>
-                  <div className="input-group mb-2">
-                    <span className="input-group-text">
-                      {props.language.productName}
-                    </span>
-                    <input
-                      type="text"
-                      className="form-control"
-                      onChange={(e) => {
-                        setProduct({ ...product, name: e.target.value });
-                      }}
-                    />
-                  </div>
-                  <div className="input-group mb-2">
-                    <span className="input-group-text">
-                      {props.language.productDescription}
-                    </span>
-                    <textarea
-                      className="form-control"
-                      onChange={(e) => {
-                        setProduct({ ...product, description: e.target.value });
-                      }}
-                    ></textarea>
-                  </div>
-                  <div className="input-group mb-2">
-                    <span className="input-group-text">
-                      {props.language.productPrice}
-                    </span>
-                    <input
-                      type="number"
-                      min="0.00"
-                      max="10000.00"
-                      step="0.01"
-                      className="form-control"
-                      onChange={(e) => {
-                        setProduct({ ...product, price: e.target.value });
-                      }}
-                    />
-                  </div>
-                  <div className="input-group mb-2">
-                    <span className="input-group-text">
-                      {props.language.category}
-                    </span>
-                    <select
-                      className="form-select form-select-sm"
-                      defaultValue={"DEFAULT"}
-                      onChange={(e) => {
-                        setProduct({ ...product, categoryId: e.target.value });
-                      }}
-                    >
-                      <option value="DEFAULT" disabled>
-                        {props.language.select}
+              <div className="input-group mb-2">
+                <span className="input-group-text">
+                  {props.language.picture}
+                </span>
+                <input
+                  type="file"
+                  name="file"
+                  id="file-input"
+                  className="form-control"
+                />
+                <input
+                  type="submit"
+                  className="btn btn-primary"
+                  value={props.language.upload}
+                  onClick={(e) => {
+                    submitEvent(e);
+                  }}
+                />
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text">
+                  {props.language.productName}
+                </span>
+                <input
+                  type="text"
+                  className="form-control"
+                  onChange={(e) => {
+                    setProduct({ ...product, name: e.target.value });
+                  }}
+                />
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text">
+                  {props.language.productDescription}
+                </span>
+                <textarea
+                  className="form-control"
+                  onChange={(e) => {
+                    setProduct({ ...product, description: e.target.value });
+                  }}
+                ></textarea>
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text">
+                  {props.language.productPrice}
+                </span>
+                <input
+                  type="number"
+                  min="0.00"
+                  max="10000.00"
+                  step="0.01"
+                  className="form-control"
+                  onChange={(e) => {
+                    setProduct({ ...product, price: e.target.value });
+                  }}
+                />
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text">
+                  {props.language.category}
+                </span>
+                <select
+                  className="form-select form-select-sm"
+                  defaultValue={"DEFAULT"}
+                  onChange={(e) => {
+                    setProduct({ ...product, categoryId: e.target.value });
+                  }}
+                >
+                  <option value="DEFAULT" disabled>
+                    {props.language.select}
+                  </option>
+                  {props.categories &&
+                    props.categories.length > 0 &&
+                    props.categories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
                       </option>
-                      {props.categories &&
-                        props.categories.length > 0 &&
-                        props.categories.map((category) => (
-                          <option key={category.id} value={category.id}>
-                            {category.name}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-                  <div className="input-group mb-2">
-                    <span className="input-group-text">
-                      {props.language.brand}
-                    </span>
-                    <select
-                      className="form-select form-select-sm"
-                      defaultValue={"DEFAULT"}
-                      onChange={(e) => {
-                        setProduct({ ...product, brandId: e.target.value });
-                      }}
-                    >
-                      <option value="DEFAULT" disabled>
-                        {props.language.select}
+                    ))}
+                </select>
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text">{props.language.brand}</span>
+                <select
+                  className="form-select form-select-sm"
+                  defaultValue={"DEFAULT"}
+                  onChange={(e) => {
+                    setProduct({ ...product, brandId: e.target.value });
+                  }}
+                >
+                  <option value="DEFAULT" disabled>
+                    {props.language.select}
+                  </option>
+                  {props.brands &&
+                    props.brands.length > 0 &&
+                    props.brands.map((brand) => (
+                      <option key={brand.id} value={brand.id}>
+                        {brand.name}
                       </option>
-                      {props.brands &&
-                        props.brands.length > 0 &&
-                        props.brands.map((brand) => (
-                          <option key={brand.id} value={brand.id}>
-                            {brand.name}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-                  <div className="input-group mb-2">
-                    <span className="input-group-text">
-                      {props.language.color}
-                    </span>
-                    <select
-                      className="form-select form-select-sm"
-                      defaultValue={"DEFAULT"}
-                      onChange={(e) => {
-                        setProduct({ ...product, colorId: e.target.value });
-                      }}
-                    >
-                      <option value="DEFAULT" disabled>
-                        {props.language.select}
+                    ))}
+                </select>
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text">{props.language.color}</span>
+                <select
+                  className="form-select form-select-sm"
+                  defaultValue={"DEFAULT"}
+                  onChange={(e) => {
+                    setProduct({ ...product, colorId: e.target.value });
+                  }}
+                >
+                  <option value="DEFAULT" disabled>
+                    {props.language.select}
+                  </option>
+                  {props.colors &&
+                    props.colors.length > 0 &&
+                    props.colors.map((color) => (
+                      <option key={color.id} value={color.id}>
+                        {color.name}
                       </option>
-                      {props.colors &&
-                        props.colors.length > 0 &&
-                        props.colors.map((color) => (
-                          <option key={color.id} value={color.id}>
-                            {color.name}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-                  <div className="input-group mb-2">
-                    <span className="input-group-text">
-                      {props.language.useCase}
-                    </span>
-                    <select
-                      className="form-select form-select-sm"
-                      defaultValue={"DEFAULT"}
-                      onChange={(e) => {
-                        setProduct({ ...product, useCaseId: e.target.value });
-                      }}
-                    >
-                      <option value="DEFAULT" disabled>
-                        {props.language.select}
+                    ))}
+                </select>
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text">
+                  {props.language.useCase}
+                </span>
+                <select
+                  className="form-select form-select-sm"
+                  defaultValue={"DEFAULT"}
+                  onChange={(e) => {
+                    setProduct({ ...product, useCaseId: e.target.value });
+                  }}
+                >
+                  <option value="DEFAULT" disabled>
+                    {props.language.select}
+                  </option>
+                  {props.useCases &&
+                    props.useCases.length > 0 &&
+                    props.useCases.map((useCase) => (
+                      <option key={useCase.id} value={useCase.id}>
+                        {useCase.name}
                       </option>
-                      {props.useCases &&
-                        props.useCases.length > 0 &&
-                        props.useCases.map((useCase) => (
-                          <option key={useCase.id} value={useCase.id}>
-                            {useCase.name}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
-                  <div className="input-group mb-2">
-                    <span className="input-group-text">
-                      {props.language.productIsOfferable}
-                    </span>
-                    <select
-                      className="form-select form-select-sm"
-                      defaultValue={"0"}
-                      onChange={(e) => {
-                        setProduct({
-                          ...product,
-                          isOfferable: e.target.value === "1",
-                        });
-                      }}
-                    >
-                      <option value="1">{props.language.yes}</option>
-                      <option value="0">{props.language.no}</option>
-                    </select>
-                  </div>
-                </>
-              )}
+                    ))}
+                </select>
+              </div>
+              <div className="input-group mb-2">
+                <span className="input-group-text">
+                  {props.language.productIsOfferable}
+                </span>
+                <select
+                  className="form-select form-select-sm"
+                  defaultValue={"0"}
+                  onChange={(e) => {
+                    setProduct({
+                      ...product,
+                      isOfferable: e.target.value === "1",
+                    });
+                  }}
+                >
+                  <option value="1">{props.language.yes}</option>
+                  <option value="0">{props.language.no}</option>
+                </select>
+              </div>
             </div>
             <div className="card-footer">
               <span
