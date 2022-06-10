@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   productDetailUser: {},
   addOrderSuccess: {},
   mySentOffers: {},
-  withdrawOfferSuccess: {},
+  withdrawOfferSuccess: 0,
   loginError: 0,
   acceptOfferSuccess: 0,
   addUserError: { success: true },

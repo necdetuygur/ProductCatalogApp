@@ -48,7 +48,7 @@ function MyReceivedOffers(props) {
       setPageLoaded(true);
     }, 1e3);
     // eslint-disable-next-line
-  }, [props.products.length, props.acceptOfferSuccess]);
+  }, [props.products.length, props.acceptOfferSuccess, props.withdrawOfferSuccess]);
 
   return (
     <>

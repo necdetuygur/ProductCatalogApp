@@ -28,7 +28,17 @@ const getMySentOffers = () => (dispatch) => {
 const withdrawOffer = (orderId) => (dispatch) => {
   axios.delete(config.ENDPOINT_ORDER + "/" + orderId).then((r) => {
     dispatch(getProducts());
-    return dispatch(getMySentOffers());
+    dispatch(getMySentOffers());
+    setTimeout(() => {
+      dispatch({
+        type: "WITHDRAW_OFFER_SUCCESS",
+        payload: 0,
+      });
+    }, 300);
+    return dispatch({
+      type: "WITHDRAW_OFFER_SUCCESS",
+      payload: r.data.success,
+    });
   });
 };
 
@@ -42,16 +52,16 @@ const acceptOffer = (orderId) => (dispatch) => {
     data: bodyFormData,
     headers: { "Content-Type": "multipart/form-data" },
   }).then((r) => {
-    dispatch({
-      type: "ACCEPT_OFFER_SUCCESS",
-      payload: r.data.success,
-    });
     setTimeout(() => {
       dispatch({
         type: "ACCEPT_OFFER_SUCCESS",
         payload: 0,
       });
     }, 300);
+    dispatch({
+      type: "ACCEPT_OFFER_SUCCESS",
+      payload: r.data.success,
+    });
     dispatch(getProducts());
     return dispatch(getMySentOffers());
   });
