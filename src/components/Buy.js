@@ -11,7 +11,7 @@ function Buy(props) {
     setStarted(true);
     setTimeout(() => {
       navigate("/sale-ok");
-    }, 3e3);
+    }, 1e3);
     if (props.isProductBuy) {
       props.buyProduct(props.product);
     } else {
