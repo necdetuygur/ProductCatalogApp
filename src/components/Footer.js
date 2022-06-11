@@ -52,6 +52,7 @@ function Footer(props) {
               defaultValue={props.theme}
               onChange={(e) => {
                 props.setTheme(e.target.value);
+                // eslint-disable-next-line
                 window.top.location.href = window.top.location.href;
               }}
             >
