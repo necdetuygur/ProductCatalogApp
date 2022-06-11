@@ -17,7 +17,7 @@ function AddProduct(props) {
     if (props.addProductSuccess && props.addProductSuccess.success) {
       setProduct({
         userId: localStorage.getItem("userId"),
-        isOfferable: 0,
+        isOfferable: false,
         picture: "",
         colorId: "DEFAULT",
         brandId: "DEFAULT",
@@ -327,7 +327,6 @@ function AddProduct(props) {
                       isOfferable: e.target.value === "1",
                     });
                   }}
-                  value={product.isOfferable}
                 >
                   <option value="1">{props.language.yes}</option>
                   <option value="0">{props.language.no}</option>
