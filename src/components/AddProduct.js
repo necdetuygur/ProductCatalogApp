@@ -9,6 +9,14 @@ function AddProduct(props) {
   const [product, setProduct] = React.useState({
     userId: localStorage.getItem("userId"),
     isOfferable: false,
+    picture: "",
+    colorId: "DEFAULT",
+    brandId: "DEFAULT",
+    useCaseId: "DEFAULT",
+    name: "",
+    description: "",
+    price: "",
+    categoryId: "DEFAULT",
   });
   const [uploadedImage, setUploadedImage] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -228,7 +236,6 @@ function AddProduct(props) {
                 </span>
                 <select
                   className="form-select form-select-sm"
-                  defaultValue={"DEFAULT"}
                   onChange={(e) => {
                     setProduct({ ...product, categoryId: e.target.value });
                   }}
@@ -250,7 +257,6 @@ function AddProduct(props) {
                 <span className="input-group-text">{props.language.brand}</span>
                 <select
                   className="form-select form-select-sm"
-                  defaultValue={"DEFAULT"}
                   onChange={(e) => {
                     setProduct({ ...product, brandId: e.target.value });
                   }}
@@ -272,7 +278,6 @@ function AddProduct(props) {
                 <span className="input-group-text">{props.language.color}</span>
                 <select
                   className="form-select form-select-sm"
-                  defaultValue={"DEFAULT"}
                   onChange={(e) => {
                     setProduct({ ...product, colorId: e.target.value });
                   }}
@@ -296,7 +301,6 @@ function AddProduct(props) {
                 </span>
                 <select
                   className="form-select form-select-sm"
-                  defaultValue={"DEFAULT"}
                   onChange={(e) => {
                     setProduct({ ...product, useCaseId: e.target.value });
                   }}
