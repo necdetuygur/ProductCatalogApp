@@ -24,7 +24,7 @@ function Header(props) {
     props.getColors();
     props.getUseCases();
     props.token && props.getMySentOffers();
-    props.setTheme(localStorage.getItem("theme"));
+    props.setTheme(props.theme);
     // eslint-disable-next-line
   }, [props.token]);
 
