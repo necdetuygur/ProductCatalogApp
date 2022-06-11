@@ -68,6 +68,7 @@ var language = {
   ERR_EMAIL_EXISTS: "E-Mail already exists",
   ERR_NAME_SHORT: "Name is short",
   ERR_SURNAME_SHORT: "Surname is short",
+  noProduct: "No product",
 };
 
 export default language;

@@ -17,10 +17,7 @@ function Home(props) {
 
   return (
     <div className="row">
-      {props.products &&
-      props.products.length > 0 &&
-      props.categories &&
-      props.categories.length > 0 ? (
+      {props.categories && props.categories.length > 0 ? (
         props.selectedCategory !== "" ? (
           props.products
             .filter(
@@ -39,12 +36,19 @@ function Home(props) {
       ) : (
         <Loading />
       )}
+      {props.categories &&
+        props.categories.length > 0 &&
+        props.products &&
+        props.products.length < 1 && (
+          <div className="text-center m-1 p-1">{props.language.noProduct}</div>
+        )}
     </div>
   );
 }
 
 export default connect(
   (state) => ({
+    language: state.language,
     categories: state.categories,
     products: state.products,
     selectedCategory: state.selectedCategory,
