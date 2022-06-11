@@ -48,7 +48,11 @@ function MyReceivedOffers(props) {
       setPageLoaded(true);
     }, 1e3);
     // eslint-disable-next-line
-  }, [props.products.length, props.acceptOfferSuccess, props.withdrawOfferSuccess]);
+  }, [
+    props.products.length,
+    props.acceptOfferSuccess,
+    props.withdrawOfferSuccess,
+  ]);
 
   return (
     <>
@@ -128,6 +132,7 @@ export default connect(
     token: state.token,
     products: state.products,
     acceptOfferSuccess: state.acceptOfferSuccess,
+    withdrawOfferSuccess: state.withdrawOfferSuccess,
   }),
   { withdrawOffer, acceptOffer }
 )(MyReceivedOffers);
