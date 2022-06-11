@@ -30,6 +30,7 @@ function Register(props) {
     }
     // eslint-disable-next-line
   }, [props.addUserError.success, props.token]);
+
   function save() {
     setLoading(true);
     var saveErrors = [];
@@ -110,6 +111,11 @@ function Register(props) {
                     onChange={(e) => {
                       setUser({ ...user, name: e.target.value });
                     }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        save();
+                      }
+                    }}
                   />
                 </div>
                 <div className="input-group mb-3">
@@ -122,6 +128,11 @@ function Register(props) {
                     placeholder={props.language.surname}
                     onChange={(e) => {
                       setUser({ ...user, surname: e.target.value });
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        save();
+                      }
                     }}
                   />
                 </div>
@@ -136,6 +147,11 @@ function Register(props) {
                     onChange={(e) => {
                       setUser({ ...user, email: e.target.value });
                     }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        save();
+                      }
+                    }}
                   />
                 </div>
                 <div className="input-group mb-3">
@@ -149,6 +165,11 @@ function Register(props) {
                     onChange={(e) => {
                       setUser({ ...user, password: e.target.value });
                     }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        save();
+                      }
+                    }}
                   />
                 </div>
                 <div className="input-group mb-3">
@@ -161,6 +182,11 @@ function Register(props) {
                     placeholder={props.language.passwordAgain}
                     onChange={(e) => {
                       setUser({ ...user, passwordAgain: e.target.value });
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        save();
+                      }
                     }}
                   />
                 </div>
