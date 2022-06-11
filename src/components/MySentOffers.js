@@ -19,7 +19,9 @@ function MySentOffers(props) {
       <tbody>
         {props.mySentOffers.map(
           (order) =>
-            (order.statusId * 1 === 1 || order.statusId * 1 === 2) && (
+            (order.statusId * 1 === 1 || order.statusId * 1 === 2) &&
+            !props.products.find((x) => x.id + "" === order.productId + "")
+              .isSold && (
               <tr key={order.id}>
                 <td>
                   {
