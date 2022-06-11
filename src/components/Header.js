@@ -115,6 +115,7 @@ export default connect(
     products: state.products,
     selectedCategory: state.selectedCategory,
     token: state.token,
+    theme: state.theme,
   }),
   {
     getCategories,
