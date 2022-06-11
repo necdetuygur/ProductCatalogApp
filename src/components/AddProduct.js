@@ -13,6 +13,23 @@ function AddProduct(props) {
   const [uploadedImage, setUploadedImage] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [errors, setErrors] = React.useState([]);
+  React.useEffect(() => {
+    if (props.addProductSuccess && props.addProductSuccess.success) {
+      setProduct({
+        userId: localStorage.getItem("userId"),
+        isOfferable: 0,
+        picture: "",
+        colorId: "DEFAULT",
+        brandId: "DEFAULT",
+        useCaseId: "DEFAULT",
+        name: "",
+        description: "",
+        price: "",
+        categoryId: "DEFAULT",
+      });
+    }
+    // eslint-disable-next-line
+  }, [props.addProductSuccess.success]);
 
   function submitEvent() {
     setLoading(true);
@@ -138,25 +155,29 @@ function AddProduct(props) {
                   {props.language.ERR_SIZE}
                 </div>
               )}
-              <div className="input-group mb-2">
-                <span className="input-group-text">
-                  {props.language.picture}
-                </span>
-                <input
-                  type="file"
-                  name="file"
-                  id="file-input"
-                  className="form-control"
-                />
-                <input
-                  type="submit"
-                  className="btn btn-primary"
-                  value={props.language.upload}
-                  onClick={(e) => {
-                    submitEvent(e);
-                  }}
-                />
-              </div>
+              {!(
+                !(uploadedImage.indexOf("ERR") > -1) && uploadedImage !== ""
+              ) && (
+                <div className="input-group mb-2">
+                  <span className="input-group-text">
+                    {props.language.picture}
+                  </span>
+                  <input
+                    type="file"
+                    name="file"
+                    id="file-input"
+                    className="form-control"
+                  />
+                  <input
+                    type="submit"
+                    className="btn btn-primary"
+                    value={props.language.upload}
+                    onClick={(e) => {
+                      submitEvent(e);
+                    }}
+                  />
+                </div>
+              )}
               <div className="input-group mb-2">
                 <span className="input-group-text">
                   {props.language.productName}
@@ -167,6 +188,7 @@ function AddProduct(props) {
                   onChange={(e) => {
                     setProduct({ ...product, name: e.target.value });
                   }}
+                  value={product.name}
                 />
               </div>
               <div className="input-group mb-2">
@@ -178,6 +200,7 @@ function AddProduct(props) {
                   onChange={(e) => {
                     setProduct({ ...product, description: e.target.value });
                   }}
+                  value={product.description}
                 ></textarea>
               </div>
               <div className="input-group mb-2">
@@ -193,6 +216,7 @@ function AddProduct(props) {
                   onChange={(e) => {
                     setProduct({ ...product, price: e.target.value });
                   }}
+                  value={product.price}
                 />
                 <span className="input-group-text">
                   {props.language.priceSign}
@@ -208,6 +232,7 @@ function AddProduct(props) {
                   onChange={(e) => {
                     setProduct({ ...product, categoryId: e.target.value });
                   }}
+                  value={product.categoryId}
                 >
                   <option value="DEFAULT" disabled>
                     {props.language.select}
@@ -229,6 +254,7 @@ function AddProduct(props) {
                   onChange={(e) => {
                     setProduct({ ...product, brandId: e.target.value });
                   }}
+                  value={product.brandId}
                 >
                   <option value="DEFAULT" disabled>
                     {props.language.select}
@@ -250,6 +276,7 @@ function AddProduct(props) {
                   onChange={(e) => {
                     setProduct({ ...product, colorId: e.target.value });
                   }}
+                  value={product.colorId}
                 >
                   <option value="DEFAULT" disabled>
                     {props.language.select}
@@ -273,6 +300,7 @@ function AddProduct(props) {
                   onChange={(e) => {
                     setProduct({ ...product, useCaseId: e.target.value });
                   }}
+                  value={product.useCaseId}
                 >
                   <option value="DEFAULT" disabled>
                     {props.language.select}
@@ -299,6 +327,7 @@ function AddProduct(props) {
                       isOfferable: e.target.value === "1",
                     });
                   }}
+                  value={product.isOfferable}
                 >
                   <option value="1">{props.language.yes}</option>
                   <option value="0">{props.language.no}</option>
