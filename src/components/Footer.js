@@ -43,9 +43,15 @@ function Footer(props) {
               }}
             >
               <option value="bootstrap.min">{props.language.default}</option>
+              <option value="litera">Litera</option>
               <option value="lux">Lux</option>
+              <option value="pulse">Pulse</option>
+              <option value="simplex">Simplex</option>
+              <option value="sketchy">Sketchy</option>
               <option value="superhero">Superhero</option>
+              <option value="united">United</option>
               <option value="vapor">Vapor</option>
+              <option value="yeti">Yeti</option>
             </select>
           </div>
         </div>
