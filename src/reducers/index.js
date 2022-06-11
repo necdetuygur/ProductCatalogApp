@@ -96,15 +96,15 @@ export const reducer = (state = INITIAL_STATE, action) => {
       return { ...state, selectedCategory: action.payload };
 
     case "THEME":
-      var css = "/css/" + action.payload + ".css";
+      var theme = action.payload || "bootstrap.min";
+      var css = "/css/" + theme + ".css";
       var link = document.createElement("link");
       link.type = "text/css";
       link.rel = "stylesheet";
       link.href = css;
       document.head.appendChild(link);
-      console.log(css);
-      localStorage.setItem("theme", action.payload);
-      return { ...state, theme: action.payload };
+      localStorage.setItem("theme", theme);
+      return { ...state, theme: theme };
 
     default:
       return state;

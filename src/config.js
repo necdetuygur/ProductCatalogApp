@@ -1,5 +1,5 @@
 // var base = "https://localhost:7170/";
-var base = "https://aipu.herokuapp.com/";
+var base = "https://productcatalog2api.herokuapp.com/";
 
 var config = {
   PICTURE_BASE: base + "img",
