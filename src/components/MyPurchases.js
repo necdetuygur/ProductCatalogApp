@@ -4,19 +4,34 @@ import { useNavigate } from "react-router";
 
 function MyPurchases(props) {
   let navigate = useNavigate();
+  const [offers, setOffers] = React.useState([]);
+  React.useEffect(() => {
+    var tempOffers = [];
+    props.mySentOffers.forEach((order) => {
+      if (
+        order.statusId * 1 === 3 &&
+        props.products.find((x) => x.id + "" === order.productId + "").isSold
+      ) {
+        tempOffers.push(order);
+      }
+    });
+    setOffers(tempOffers);
+    // eslint-disable-next-line
+  }, [props.products.length, props.withdrawOfferSuccess]);
+
   return (
-    <table className="table table-striped">
-      <thead>
-        <tr>
-          <th>{props.language.productName}</th>
-          <th>{props.language.offerPrice}</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {props.mySentOffers.map(
-          (order) =>
-            order.statusId * 1 === 3 && (
+    <>
+      {offers.length > 0 ? (
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>{props.language.productName}</th>
+              <th>{props.language.offerPrice}</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {offers.map((order) => (
               <tr key={order.id}>
                 <td>
                   {
@@ -40,10 +55,13 @@ function MyPurchases(props) {
                   </button>
                 </td>
               </tr>
-            )
-        )}
-      </tbody>
-    </table>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div className="text-center m-5 p-5">{props.language.noData}</div>
+      )}
+    </>
   );
 }
 
