@@ -69,6 +69,7 @@ var language = {
   ERR_NAME_SHORT: "Name is short",
   ERR_SURNAME_SHORT: "Surname is short",
   noProduct: "No product",
+  default: "Default",
 };
 
 export default language;

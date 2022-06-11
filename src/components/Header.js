@@ -9,6 +9,7 @@ import {
   getColors,
   getUseCases,
   getMySentOffers,
+  setTheme,
 } from "../actions";
 import { useNavigate } from "react-router";
 import HeaderButtons from "./HeaderButtons";
@@ -23,6 +24,7 @@ function Header(props) {
     props.getColors();
     props.getUseCases();
     props.token && props.getMySentOffers();
+    props.setTheme(localStorage.getItem("theme"));
     // eslint-disable-next-line
   }, [props.token]);
 
@@ -122,5 +124,6 @@ export default connect(
     getColors,
     getUseCases,
     getMySentOffers,
+    setTheme,
   }
 )(Header);

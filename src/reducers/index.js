@@ -19,6 +19,7 @@ const INITIAL_STATE = {
   loginError: 0,
   acceptOfferSuccess: 0,
   addUserError: { success: true },
+  theme: localStorage.getItem("theme") || "bootstrap.min",
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -93,6 +94,17 @@ export const reducer = (state = INITIAL_STATE, action) => {
 
     case "SET_CATEGORY":
       return { ...state, selectedCategory: action.payload };
+
+    case "THEME":
+      var css = "/css/" + action.payload + ".css";
+      var link = document.createElement("link");
+      link.type = "text/css";
+      link.rel = "stylesheet";
+      link.href = css;
+      document.head.appendChild(link);
+      console.log(css);
+      localStorage.setItem("theme", action.payload);
+      return { ...state, theme: action.payload };
 
     default:
       return state;

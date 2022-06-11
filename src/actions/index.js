@@ -6,3 +6,4 @@ export * from "./color";
 export * from "./useCase";
 export * from "./user";
 export * from "./order";
+export * from "./theme";
