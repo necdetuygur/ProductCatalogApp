@@ -66,6 +66,7 @@ var language = {
   ERR_EMAIL_EXISTS: "Bu E-Posta adresi kayıtlıdır",
   ERR_NAME_SHORT: "İsim kısa",
   ERR_SURNAME_SHORT: "Soyisim kısa",
+  noProduct: "Ürün yok",
 };
 
 export default language;

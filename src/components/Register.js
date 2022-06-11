@@ -29,7 +29,7 @@ function Register(props) {
       setLoading(false);
     }
     // eslint-disable-next-line
-  }, [props.addUserError.success]);
+  }, [props.addUserError.success, props.token]);
   function save() {
     setLoading(true);
     var saveErrors = [];
