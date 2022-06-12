@@ -4,6 +4,8 @@ import { useNavigate } from "react-router";
 import { withdrawOffer } from "../actions";
 import Modal from "./Modal";
 import Buy from "./Buy";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 function MySentOffers(props: any) {
   let navigate = useNavigate();
@@ -55,6 +57,7 @@ function MySentOffers(props: any) {
                       navigate("/product/" + order.productId);
                     }}
                   >
+                    <FontAwesomeIcon icon={faEye} className="me-2" />
                     {props.language.showProduct}
                   </button>
 
@@ -79,6 +82,7 @@ function MySentOffers(props: any) {
                       props.withdrawOffer(order.id);
                     }}
                   >
+                    <FontAwesomeIcon icon={faXmark} className="me-2" />
                     {props.language.withdrawOffer}
                   </button>
                 </td>

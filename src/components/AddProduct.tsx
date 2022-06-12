@@ -4,6 +4,12 @@ import { addProduct, getProducts } from "../actions";
 import config from "../config";
 import Success from "./Success";
 import Loading from "./Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faFileUpload,
+  faRemove,
+  faSave,
+} from "@fortawesome/free-solid-svg-icons";
 
 function AddProduct(props: any) {
   const [product, setProduct] = React.useState({
@@ -129,6 +135,7 @@ function AddProduct(props: any) {
                     setProduct({ ...product, picture: "" });
                   }}
                 >
+                  <FontAwesomeIcon icon={faRemove} className="me-2" />
                   {props.language.removeImage}
                 </button>
               )}
@@ -185,14 +192,16 @@ function AddProduct(props: any) {
                     id="file-input"
                     className="form-control"
                   />
-                  <input
-                    type="submit"
+                  <button
+                    type="button"
                     className="btn btn-primary"
-                    value={props.language.upload}
                     onClick={(e) => {
                       submitEvent();
                     }}
-                  />
+                  >
+                    <FontAwesomeIcon icon={faFileUpload} className="me-2" />
+                    {props.language.upload}
+                  </button>
                 </div>
               )}
               <div className="input-group mb-2">
@@ -347,14 +356,16 @@ function AddProduct(props: any) {
               </div>
             </div>
             <div className="card-footer">
-              <span
+              <button
+                type="button"
                 className="btn btn-primary float-end cp"
                 onClick={() => {
                   doSave();
                 }}
               >
+                <FontAwesomeIcon icon={faSave} className="me-2" />
                 {props.language.save}
-              </span>
+              </button>
             </div>
           </div>
         </div>

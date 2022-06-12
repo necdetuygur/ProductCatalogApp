@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 function MyPurchases(props: any) {
   let navigate = useNavigate();
@@ -52,6 +54,7 @@ function MyPurchases(props: any) {
                       navigate("/product/" + order.productId);
                     }}
                   >
+                    <FontAwesomeIcon icon={faEye} className="me-2" />
                     {props.language.showProduct}
                   </button>
                 </td>

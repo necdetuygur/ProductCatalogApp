@@ -4,6 +4,12 @@ import { useNavigate } from "react-router";
 import MyPurchases from "./MyPurchases";
 import MyReceivedOffers from "./MyReceivedOffers";
 import MySentOffers from "./MySentOffers";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowDown,
+  faArrowUp,
+  faShoppingBasket,
+} from "@fortawesome/free-solid-svg-icons";
 
 function MyAccount(props: any) {
   let navigate = useNavigate();
@@ -24,6 +30,7 @@ function MyAccount(props: any) {
                 setCurrentTab(1);
               }}
             >
+              <FontAwesomeIcon icon={faArrowDown} className="me-2" />
               {props.language.receivedOffers}
             </span>
           </li>
@@ -34,6 +41,7 @@ function MyAccount(props: any) {
                 setCurrentTab(2);
               }}
             >
+              <FontAwesomeIcon icon={faArrowUp} className="me-2" />
               {props.language.sentOffers}
             </span>
           </li>
@@ -44,6 +52,7 @@ function MyAccount(props: any) {
                 setCurrentTab(3);
               }}
             >
+              <FontAwesomeIcon icon={faShoppingBasket} className="me-2" />
               {props.language.myPurchases}
             </span>
           </li>

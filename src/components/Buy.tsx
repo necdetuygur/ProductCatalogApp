@@ -3,6 +3,8 @@ import { useNavigate } from "react-router";
 import Loading from "./Loading";
 import { connect } from "react-redux";
 import { buyProduct, buyOrder } from "../actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWallet } from "@fortawesome/free-solid-svg-icons";
 
 function Buy(props: any) {
   const [started, setStarted] = React.useState(false);
@@ -27,6 +29,7 @@ function Buy(props: any) {
             buyStart();
           }}
         >
+          <FontAwesomeIcon icon={faWallet} className="me-2" />
           {props.language.makeBuy}
         </button>
       ) : (

@@ -7,6 +7,12 @@ import Loading from "./Loading";
 import Modal from "./Modal";
 import SendOffer from "./SendOffer";
 import Buy from "./Buy";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowUp,
+  faWallet,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 function ProductDetail(props: any) {
   let params = useParams();
@@ -217,7 +223,12 @@ function ProductDetail(props: any) {
               <Modal
                 modalId="buy"
                 title={props.language.buy}
-                buttonText={props.language.buy}
+                buttonText={
+                  <>
+                    <FontAwesomeIcon icon={faWallet} className="me-2" />
+                    {props.language.buy}
+                  </>
+                }
                 buttonClassName="btn btn-success cp ms-1"
               >
                 <Buy product={product} isProductBuy={true} />
@@ -231,7 +242,12 @@ function ProductDetail(props: any) {
                   <Modal
                     modalId="sendOffer"
                     title={props.language.sendOffer}
-                    buttonText={props.language.sendOffer}
+                    buttonText={
+                      <>
+                        <FontAwesomeIcon icon={faArrowUp} className="me-2" />
+                        {props.language.sendOffer}
+                      </>
+                    }
                     buttonClassName="btn btn-primary cp ms-1"
                   >
                     <SendOffer product={product} />
@@ -250,6 +266,7 @@ function ProductDetail(props: any) {
                     );
                   }}
                 >
+                  <FontAwesomeIcon icon={faXmark} className="me-2" />
                   {props.language.withdrawOffer}
                 </button>
               )}

@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { addOrder } from "../actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 
 function SendOffer(props: any) {
   const [price, setPrice] = React.useState(0);
@@ -72,6 +74,7 @@ function SendOffer(props: any) {
             props.addOrder(order);
           }}
         >
+          <FontAwesomeIcon icon={faArrowUp} className="me-2" />
           {props.language.sendOffer}
         </button>
       </div>

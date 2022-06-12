@@ -5,6 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import { withdrawOffer, acceptOffer } from "../actions";
 import Loading from "./Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faEye, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const getProductOffers = async (productId: number) => {
   var res = await axios.get(
@@ -94,6 +96,7 @@ function MyReceivedOffers(props: any) {
                       navigate("/product/" + order.productId);
                     }}
                   >
+                    <FontAwesomeIcon icon={faEye} className="me-2" />
                     {props.language.showProduct}
                   </button>
                   <button
@@ -102,6 +105,7 @@ function MyReceivedOffers(props: any) {
                       props.acceptOffer(order.id);
                     }}
                   >
+                    <FontAwesomeIcon icon={faCheck} className="me-2" />
                     {props.language.acceptOffer}
                   </button>
                   <button
@@ -110,6 +114,7 @@ function MyReceivedOffers(props: any) {
                       props.withdrawOffer(order.id);
                     }}
                   >
+                    <FontAwesomeIcon icon={faXmark} className="me-2" />
                     {props.language.rejectOffer}
                   </button>
                 </td>

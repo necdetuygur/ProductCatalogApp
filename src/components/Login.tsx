@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { login } from "../actions";
 import { useNavigate } from "react-router";
 import Loading from "./Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
 
 function Login(props: any) {
   let navigate = useNavigate();
@@ -57,7 +59,7 @@ function Login(props: any) {
               <>
                 <div className="input-group mb-3">
                   <span className="input-group-text">
-                    {props.language.email}
+                    <FontAwesomeIcon icon={faUser} />
                   </span>
                   <input
                     type="text"
@@ -81,7 +83,7 @@ function Login(props: any) {
                 )}
                 <div className="input-group mb-3">
                   <span className="input-group-text">
-                    {props.language.password}
+                    <FontAwesomeIcon icon={faKey} />
                   </span>
                   <input
                     type="password"
@@ -111,11 +113,13 @@ function Login(props: any) {
           </div>
           <div className="card-footer text-end">
             <button
+              type="button"
               className="btn btn-primary"
               onClick={() => {
                 doLogin();
               }}
             >
+              <FontAwesomeIcon icon={faArrowRight} className="me-2" />
               {props.language.login}
             </button>
           </div>

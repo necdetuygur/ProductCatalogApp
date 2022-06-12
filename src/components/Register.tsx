@@ -4,6 +4,8 @@ import { addUser, login } from "../actions";
 import { useNavigate } from "react-router";
 import Success from "./Success";
 import Loading from "./Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSave } from "@fortawesome/free-solid-svg-icons";
 
 function validateEmail(email: string) {
   var re = /\S+@\S+\.\S+/;
@@ -201,6 +203,7 @@ function Register(props: any) {
                 save();
               }}
             >
+              <FontAwesomeIcon icon={faSave} className="me-2" />
               {props.language.register}
             </button>
           </div>

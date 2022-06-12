@@ -2,6 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { connect } from "react-redux";
 import { logout } from "../actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDoorOpen,
+  faPlus,
+  faUser,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 
 function HeaderButtons(props: any) {
   let navigate = useNavigate();
@@ -15,6 +22,7 @@ function HeaderButtons(props: any) {
               navigate("/login");
             }}
           >
+            <FontAwesomeIcon icon={faUser} className="me-2" />
             {props.language.login}
           </button>
           <button
@@ -23,6 +31,7 @@ function HeaderButtons(props: any) {
               navigate("/register");
             }}
           >
+            <FontAwesomeIcon icon={faUsers} className="me-2" />
             {props.language.register}
           </button>
         </>
@@ -36,6 +45,7 @@ function HeaderButtons(props: any) {
               navigate("/add-product");
             }}
           >
+            <FontAwesomeIcon icon={faPlus} className="me-2" />
             {props.language.addProduct}
           </button>
 
@@ -47,6 +57,7 @@ function HeaderButtons(props: any) {
                 navigate("/my-account");
               }}
             >
+              <FontAwesomeIcon icon={faUser} className="me-2" />
               {props.language.myAccount}
             </button>
             <button
@@ -65,6 +76,7 @@ function HeaderButtons(props: any) {
                     navigate("/my-account");
                   }}
                 >
+                  <FontAwesomeIcon icon={faUser} className="me-2" />
                   {localStorage.getItem("name") +
                     " " +
                     localStorage.getItem("surname")}
@@ -79,6 +91,7 @@ function HeaderButtons(props: any) {
                     navigate("/login");
                   }}
                 >
+                  <FontAwesomeIcon icon={faDoorOpen} className="me-2" />
                   {props.language.logout}
                 </span>
               </li>
