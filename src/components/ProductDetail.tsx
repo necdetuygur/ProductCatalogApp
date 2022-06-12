@@ -137,9 +137,13 @@ function ProductDetail(props: any) {
                   <div className="col-4">{props.language.user}</div>
                   <div className="col-4">
                     {props.productDetailUser &&
+                    typeof props.productDetailUser.name === "undefined" ? (
+                      <Loading onlyImage={true} width={"16px"} />
+                    ) : (
                       props.productDetailUser.name +
-                        " " +
-                        props.productDetailUser.surname}
+                      " " +
+                      props.productDetailUser.surname
+                    )}
                   </div>
                 </li>
 
