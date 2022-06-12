@@ -68,6 +68,8 @@ var language = {
   ERR_SURNAME_SHORT: "Soyisim kısa",
   noProduct: "Ürün yok",
   default: "Varsayılan",
+  language: "Dil",
+  theme: "Tema",
 };
 
 export default language;
