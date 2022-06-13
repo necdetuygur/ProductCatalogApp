@@ -104,7 +104,12 @@ function AddProduct(props: any) {
     if (!product.useCaseId || product.useCaseId === "DEFAULT") {
       saveErrors.push(props.language.ERR_USECASE_REQUIRED);
     }
-    if (!product.price || product.price === "" || product.price === ".") {
+    if (
+      !product.price ||
+      product.price === "" ||
+      product.price === "." ||
+      product.price === ","
+    ) {
       saveErrors.push(props.language.ERR_PRICE_REQUIRED);
     }
     if (!uploadedImage) {
