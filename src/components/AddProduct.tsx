@@ -149,7 +149,11 @@ function AddProduct(props: any) {
               )}
               {!(uploadedImage.indexOf("ERR") > -1) && (
                 <img
-                  style={{ width: "100%", minHeight: "300px" }}
+                  style={{
+                    width: "100%",
+                    height: "500px",
+                    objectFit: "contain",
+                  }}
                   src={config.PICTURE_BASE + "/" + uploadedImage}
                   alt=""
                   className="mb-2"
