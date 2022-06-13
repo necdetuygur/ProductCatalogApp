@@ -98,7 +98,7 @@ function AddProduct(props: any) {
     if (!!product.description && product.description.length > 500) {
       saveErrors.push(props.language.ERR_PRODUCTDESCRIPTIONLONG);
     }
-    if (!product.categoryId) {
+    if (!product.categoryId || product.categoryId === "DEFAULT") {
       saveErrors.push(props.language.ERR_CATEGORY_REQUIRED);
     }
     if (!product.useCaseId) {
