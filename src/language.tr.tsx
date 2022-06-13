@@ -70,6 +70,7 @@ var language = {
   default: "Varsayılan",
   language: "Dil",
   theme: "Tema",
+  loginSuccess: "Giriş başarılı",
 };
 
 export default language;

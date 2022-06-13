@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import Loading from "./Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faKey, faUser } from "@fortawesome/free-solid-svg-icons";
+import Success from "./Success";
 
 function Login(props: any) {
   let navigate = useNavigate();
@@ -17,7 +18,9 @@ function Login(props: any) {
   const [loading, setLoading] = React.useState(false);
 
   React.useEffect(() => {
-    props.token && navigate("/");
+    setTimeout(() => {
+      props.token && navigate("/");
+    }, 2e3);
   });
 
   function validateEmail(email: string) {
@@ -40,11 +43,7 @@ function Login(props: any) {
     setLoading(true);
     setMailErr(!validateEmail(user.email));
     validatePassword();
-
     validateEmail(user.email) && validatePassword() && props.login(user);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1e3);
   }
 
   return (
@@ -53,62 +52,65 @@ function Login(props: any) {
         <div className="card mt-5">
           <div className="card-header">{props.language.login}</div>
           <div className="card-body">
-            {loading ? (
+            {props.token && <Success text={props.language.loginSuccess} />}
+            {loading && !props.token ? (
               <Loading />
             ) : (
-              <>
-                <div className="input-group mb-3">
-                  <span className="input-group-text">
-                    <FontAwesomeIcon icon={faUser} />
-                  </span>
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder={props.language.email}
-                    onChange={(e) => {
-                      setMailErr(!validateEmail(e.target.value));
-                      setUser({ ...user, email: e.target.value });
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        doLogin();
-                      }
-                    }}
-                  />
-                </div>
-                {mailErr && (
-                  <div className="alert alert-danger mb-3">
-                    {props.language.ERR_EMAILINVALID}
+              !props.token && (
+                <>
+                  <div className="input-group mb-3">
+                    <span className="input-group-text">
+                      <FontAwesomeIcon icon={faUser} />
+                    </span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={props.language.email}
+                      onChange={(e) => {
+                        setMailErr(!validateEmail(e.target.value));
+                        setUser({ ...user, email: e.target.value });
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          doLogin();
+                        }
+                      }}
+                    />
                   </div>
-                )}
-                <div className="input-group mb-3">
-                  <span className="input-group-text">
-                    <FontAwesomeIcon icon={faKey} />
-                  </span>
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder={props.language.password}
-                    onChange={(e) => {
-                      setUser({ ...user, password: e.target.value });
-                      validatePassword();
-                    }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") {
-                        doLogin();
-                      }
-                    }}
-                  />
-                </div>
-                {passwordErr && (
-                  <div className="alert alert-danger mb-3">{passwordErr}</div>
-                )}
-                {props.loginError === 404 && (
-                  <div className="alert alert-danger p-2 mb-1" role="alert">
-                    {props.language.ERR_LOGIN}
+                  {mailErr && (
+                    <div className="alert alert-danger mb-3">
+                      {props.language.ERR_EMAILINVALID}
+                    </div>
+                  )}
+                  <div className="input-group mb-3">
+                    <span className="input-group-text">
+                      <FontAwesomeIcon icon={faKey} />
+                    </span>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder={props.language.password}
+                      onChange={(e) => {
+                        setUser({ ...user, password: e.target.value });
+                        validatePassword();
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          doLogin();
+                        }
+                      }}
+                    />
                   </div>
-                )}
-              </>
+                  {passwordErr && (
+                    <div className="alert alert-danger mb-3">{passwordErr}</div>
+                  )}
+                  {props.loginError === 404 && (
+                    <div className="alert alert-danger p-2 mb-1" role="alert">
+                      {props.language.ERR_LOGIN}
+                    </div>
+                  )}
+                </>
+              )
             )}
           </div>
           <div className="card-footer text-end">

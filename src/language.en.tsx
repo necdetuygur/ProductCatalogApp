@@ -72,6 +72,7 @@ var language = {
   default: "Default",
   language: "Language",
   theme: "Theme",
+  loginSuccess: "Login success",
 };
 
 export default language;
