@@ -71,6 +71,7 @@ var language = {
   language: "Dil",
   theme: "Tema",
   loginSuccess: "Giriş başarılı",
+  ERR_PRICE_REQUIRED: "Fiyat alanı doldurulması zorunludur",
 };
 
 export default language;

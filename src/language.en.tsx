@@ -73,6 +73,7 @@ var language = {
   language: "Language",
   theme: "Theme",
   loginSuccess: "Login success",
+  ERR_PRICE_REQUIRED: "Price is required",
 };
 
 export default language;
