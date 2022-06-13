@@ -35,7 +35,11 @@ function MyReceivedOffers(props: any) {
     );
     allOffersResponses.forEach((r) => {
       r.data.forEach((offer: any) => {
-        if (offer.statusId * 1 === 1) {
+        if (
+          offer.statusId * 1 === 1 &&
+          !props.products.find((x: any) => x.id + "" === offer.productId + "")
+            .isSold
+        ) {
           tempOffers.push(offer);
         }
       });
