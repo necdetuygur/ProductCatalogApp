@@ -92,10 +92,10 @@ function AddProduct(props: any) {
 
   function doSave() {
     var saveErrors = [];
-    if (!!product.name && product.name.length > 99) {
+    if (!!product.name && product.name.length > 100) {
       saveErrors.push(props.language.ERR_PRODUCTNAMELONG);
     }
-    if (!!product.description && product.description.length > 499) {
+    if (!!product.description && product.description.length > 500) {
       saveErrors.push(props.language.ERR_PRODUCTDESCRIPTIONLONG);
     }
     if (!product.categoryId) {
