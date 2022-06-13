@@ -112,7 +112,7 @@ function ProductDetail(props: any) {
           <div className="card-body p-0">
             <img
               style={{
-                minWidth: "100%",
+                width: "100%",
                 height: "500px",
                 objectFit: "contain",
               }}
