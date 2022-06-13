@@ -15,7 +15,7 @@ function Product(props: any) {
     >
       <div className="card bg-light">
         <img
-          style={{ minWidth: "100%", height: "150px" }}
+          style={{ minWidth: "100%", height: "150px", objectFit: "contain" }}
           className="card-img-top"
           src={config.PICTURE_BASE + "/" + props.product.picture}
           alt=""
