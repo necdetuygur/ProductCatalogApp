@@ -8,7 +8,7 @@ function Product(props: any) {
 
   return (
     <div
-      className="col-md-3 mb-3"
+      className="col-md-3 mb-3 cp"
       onClick={() => {
         navigate("/product/" + props.product.id);
       }}
@@ -21,8 +21,8 @@ function Product(props: any) {
           alt=""
         />
         <div className="card-body">
-          <h5 className="card-title">{props.product.name}</h5>
-          <div className="card-text">{props.product.description}</div>
+          <h5 className="card-title cut-text">{props.product.name}</h5>
+          <div className="card-text cut-text">{props.product.description}</div>
         </div>
         <div className="card-footer">
           <span className="align-bottom">
