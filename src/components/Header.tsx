@@ -25,6 +25,9 @@ function Header(props: any) {
     props.getUseCases();
     props.token && props.getMySentOffers();
     props.setTheme(props.theme);
+    setTimeout(() => {
+      document.getElementsByTagName("body")[0].style.display = "block";
+    }, 10);
     // eslint-disable-next-line
   }, [props.token]);
 
