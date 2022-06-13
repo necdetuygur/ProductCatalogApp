@@ -27,7 +27,7 @@ function Header(props: any) {
     props.setTheme(props.theme);
     setTimeout(() => {
       document.getElementsByTagName("body")[0].style.display = "block";
-    }, 333);
+    }, 1e3);
     // eslint-disable-next-line
   }, [props.token]);
 
