@@ -20,7 +20,7 @@ function Login(props: any) {
   React.useEffect(() => {
     setTimeout(() => {
       props.token && navigate("/");
-    }, 2e3);
+    }, 1500);
   });
 
   function validateEmail(email: string) {
@@ -44,6 +44,9 @@ function Login(props: any) {
     setMailErr(!validateEmail(user.email));
     validatePassword();
     validateEmail(user.email) && validatePassword() && props.login(user);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2e3);
   }
 
   return (
@@ -75,6 +78,7 @@ function Login(props: any) {
                           doLogin();
                         }
                       }}
+                      value={user.email}
                     />
                   </div>
                   {mailErr && (
@@ -99,6 +103,7 @@ function Login(props: any) {
                           doLogin();
                         }
                       }}
+                      value={user.password}
                     />
                   </div>
                   {passwordErr && (
@@ -114,16 +119,18 @@ function Login(props: any) {
             )}
           </div>
           <div className="card-footer text-end">
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={() => {
-                doLogin();
-              }}
-            >
-              <FontAwesomeIcon icon={faArrowRight} className="me-2" />
-              {props.language.login}
-            </button>
+            {!loading && (
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => {
+                  doLogin();
+                }}
+              >
+                <FontAwesomeIcon icon={faArrowRight} className="me-2" />
+                {props.language.login}
+              </button>
+            )}
           </div>
         </div>
       </div>
