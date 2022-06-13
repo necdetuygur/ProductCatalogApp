@@ -28,7 +28,7 @@ function Login(props: any) {
     if ((!!user.password && user.password.length < 8) || !user.password) {
       setPasswordErr(props.language.ERR_PASSWORD_SHORT);
       return false;
-    } else if (!!user.password && user.password.length > 19) {
+    } else if (!!user.password && user.password.length > 20) {
       setPasswordErr(props.language.ERR_PASSWORD_LONG);
       return false;
     }
