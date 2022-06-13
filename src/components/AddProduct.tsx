@@ -101,7 +101,7 @@ function AddProduct(props: any) {
     if (!product.categoryId || product.categoryId === "DEFAULT") {
       saveErrors.push(props.language.ERR_CATEGORY_REQUIRED);
     }
-    if (!product.useCaseId) {
+    if (!product.useCaseId || product.useCaseId === "DEFAULT") {
       saveErrors.push(props.language.ERR_USECASE_REQUIRED);
     }
     if (!uploadedImage) {
