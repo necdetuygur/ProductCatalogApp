@@ -84,8 +84,8 @@ function SendOffer(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    addOrderSuccess: state.addOrderSuccess,
+    language: state.language.language,
+    addOrderSuccess: state.order.addOrderSuccess,
   }),
   { addOrder }
 )(SendOffer);

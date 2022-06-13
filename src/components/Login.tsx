@@ -131,9 +131,9 @@ function Login(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    token: state.token,
-    loginError: state.loginError,
+    language: state.language.language,
+    token: state.user.token,
+    loginError: state.user.loginError,
   }),
   {
     login,

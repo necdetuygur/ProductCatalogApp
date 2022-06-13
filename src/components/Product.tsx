@@ -40,7 +40,7 @@ function Product(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
+    language: state.language.language,
   }),
   {}
 )(Product);

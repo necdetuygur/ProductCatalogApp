@@ -282,14 +282,14 @@ function ProductDetail(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    products: state.products,
-    categories: state.categories,
-    brands: state.brands,
-    colors: state.colors,
-    useCases: state.useCases,
-    productDetailUser: state.productDetailUser,
-    mySentOffers: state.mySentOffers,
+    language: state.language.language,
+    products: state.product.products,
+    categories: state.category.categories,
+    brands: state.brand.brands,
+    colors: state.color.colors,
+    useCases: state.useCase.useCases,
+    productDetailUser: state.product.productDetailUser,
+    mySentOffers: state.order.mySentOffers,
   }),
   {
     getUserById,

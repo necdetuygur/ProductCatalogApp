@@ -215,10 +215,10 @@ function Register(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    addUserSuccess: state.addUserSuccess,
-    token: state.token,
-    addUserError: state.addUserError,
+    language: state.language.language,
+    addUserSuccess: state.user.addUserSuccess,
+    token: state.user.token,
+    addUserError: state.user.addUserError,
   }),
   { addUser, login }
 )(Register);

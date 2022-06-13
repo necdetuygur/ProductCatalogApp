@@ -110,12 +110,12 @@ function Header(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    categories: state.categories,
-    products: state.products,
-    selectedCategory: state.selectedCategory,
-    token: state.token,
-    theme: state.theme,
+    language: state.language.language,
+    categories: state.category.categories,
+    products: state.product.products,
+    selectedCategory: state.category.selectedCategory,
+    token: state.user.token,
+    theme: state.theme.theme,
   }),
   {
     getCategories,

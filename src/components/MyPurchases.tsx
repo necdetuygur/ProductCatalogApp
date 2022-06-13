@@ -71,11 +71,11 @@ function MyPurchases(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    token: state.token,
-    mySentOffers: state.mySentOffers,
-    products: state.products,
-    withdrawOfferSuccess: state.withdrawOfferSuccess,
+    language: state.language.language,
+    token: state.user.token,
+    mySentOffers: state.order.mySentOffers,
+    products: state.product.products,
+    withdrawOfferSuccess: state.order.withdrawOfferSuccess,
   }),
   {}
 )(MyPurchases);

@@ -133,11 +133,11 @@ function MyReceivedOffers(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    token: state.token,
-    products: state.products,
-    acceptOfferSuccess: state.acceptOfferSuccess,
-    withdrawOfferSuccess: state.withdrawOfferSuccess,
+    language: state.language.language,
+    token: state.user.token,
+    products: state.product.products,
+    acceptOfferSuccess: state.order.acceptOfferSuccess,
+    withdrawOfferSuccess: state.order.withdrawOfferSuccess,
   }),
   { withdrawOffer, acceptOffer }
 )(MyReceivedOffers);

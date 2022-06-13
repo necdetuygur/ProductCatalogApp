@@ -69,8 +69,8 @@ function MyAccount(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    token: state.token,
+    language: state.language.language,
+    token: state.user.token,
   }),
   {}
 )(MyAccount);

@@ -72,9 +72,9 @@ function Footer(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    selectedLanguage: state.selectedLanguage,
-    theme: state.theme,
+    language: state.language.language,
+    selectedLanguage: state.language.selectedLanguage,
+    theme: state.theme.theme,
   }),
   { setLanguage, setTheme }
 )(Footer);

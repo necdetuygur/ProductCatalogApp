@@ -105,8 +105,8 @@ function HeaderButtons(props: any) {
 
 export default connect(
   (state: any) => ({
-    token: state.token,
-    language: state.language,
+    token: state.user.token,
+    language: state.language.language,
   }),
   {
     logout,

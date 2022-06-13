@@ -50,10 +50,10 @@ function Home(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    categories: state.categories,
-    products: state.products,
-    selectedCategory: state.selectedCategory,
+    language: state.language.language,
+    categories: state.category.categories,
+    products: state.product.products,
+    selectedCategory: state.category.selectedCategory,
   }),
   { setCategory }
 )(Home);

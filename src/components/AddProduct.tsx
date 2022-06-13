@@ -376,12 +376,12 @@ function AddProduct(props: any) {
 
 export default connect(
   (state: any) => ({
-    language: state.language,
-    brands: state.brands,
-    categories: state.categories,
-    colors: state.colors,
-    useCases: state.useCases,
-    addProductSuccess: state.addProductSuccess,
+    language: state.language.language,
+    brands: state.brand.brands,
+    categories: state.category.categories,
+    colors: state.color.colors,
+    useCases: state.useCase.useCases,
+    addProductSuccess: state.product.addProductSuccess,
   }),
   {
     addProduct,
