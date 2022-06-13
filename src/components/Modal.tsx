@@ -6,12 +6,6 @@ function Modal(props: any) {
         className={props.buttonClassName}
         data-bs-toggle="modal"
         data-bs-target={"#" + props.modalId}
-        onClick={() => {
-          const el = document.querySelector(".modal-backdrop");
-          if (el != null) {
-            el.remove();
-          }
-        }}
       >
         {props.buttonText}
       </button>

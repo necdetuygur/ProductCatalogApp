@@ -12,6 +12,10 @@ function Buy(props: any) {
   function buyStart() {
     setStarted(true);
     setTimeout(() => {
+      const modalCloseBtn = document.querySelector(".btn-close") as HTMLElement;
+      if (modalCloseBtn != null) {
+        modalCloseBtn.click();
+      }
       navigate("/sale-ok");
     }, 1e3);
     if (props.isProductBuy) {
