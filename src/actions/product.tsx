@@ -14,6 +14,15 @@ const getProducts = () => (dispatch: Dispatch) => {
 const addProduct = (product: any) => (dispatch: Dispatch) => {
   var token = localStorage.getItem("token") || "";
   var axiosConfig = { headers: { Authorization: `Bearer ${token}` } };
+  if (product.colorId === "DEFAULT" || product.colorId.trim() === "")
+    delete product["colorId"];
+  if (product.brandId === "DEFAULT" || product.brandId.trim() === "")
+    delete product["brandId"];
+  if (product.useCaseId === "DEFAULT" || product.useCaseId.trim() === "")
+    delete product["useCaseId"];
+  if (product.categoryId === "DEFAULT" || product.categoryId.trim() === "")
+    delete product["categoryId"];
+  console.log("product", product);
   axios.post(config.ENDPOINT_ADD_PRODUCT, product, axiosConfig).then((r) => {
     getProducts();
 

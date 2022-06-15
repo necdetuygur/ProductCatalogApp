@@ -41,6 +41,7 @@ function AddProduct(props: any) {
         price: "",
         categoryId: "DEFAULT",
       });
+      setUploadedImage("");
       props.getProducts();
     }
     // eslint-disable-next-line
